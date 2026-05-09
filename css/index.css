@@ -6,7 +6,7 @@
 
 @font-face {
   font-family: "PlayfairDisplay";
-  src: url("../fonts/PlayfairDisplay-Regular.ttf");
+  src: url("../fonts/PlayfairDisplay-Italic.ttf");
 }
 
 @font-face {
@@ -14,7 +14,63 @@
   src: url("../fonts/Italianno-Regular.ttf");
 }
 
+/*CONFIGURAÇÃO DA PÁGINA*/
+
 *{
     margin: 0px;
     padding: 0px;
+}
+
+body{
+    font-family: "Nunito";
+}
+
+
+/*HEADER*/
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 90px;
+
+    position: fixed; /*fixa o elemento na janela*/
+    background-color: #ffffff; /* Cor de fundo (senão o texto de baixo vai passar por trás) */
+    z-index: 1000; /* Garante que fique POR CIMA de tudo */
+   
+    left: 0;
+    width: 100%;
+
+    box-sizing: border-box; /* Faz o padding ser incluído na largura total */
+
+    .logo{
+        display: flex;
+        align-items: center;
+
+        img{
+            width: 58px;
+            height: 49px;
+        }
+
+        span{
+            font-family: "PlayfairDisplay";
+        }
+    }
+}
+
+nav{
+    ul{
+        list-style: none;
+        display: flex;
+        
+        li{
+            margin: 10px;
+
+            a{
+                text-decoration: none;
+                color: #000;
+            }
+        }
+    
+    }
+
 }
