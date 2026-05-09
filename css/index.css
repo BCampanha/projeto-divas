@@ -5,8 +5,13 @@
 }
 
 @font-face {
+  font-family: "Nunito-Medium";
+  src: url("../fonts/Nunito-Medium.ttf");
+}
+
+@font-face {
   font-family: "PlayfairDisplay";
-  src: url("../fonts/PlayfairDisplay-Italic.ttf");
+  src: url("../fonts/PlayfairDisplay-Regular.ttf");
 }
 
 @font-face {
@@ -17,6 +22,11 @@
 @font-face {
   font-family: "Italianno";
   src: url("../fonts/Italianno-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../fonts/Poppins-Medium.ttf");
 }
 
 /*CONFIGURAÇÃO DA PÁGINA*/
@@ -140,4 +150,87 @@ span{
   background-color: #FFF6E5; 
   border-radius: 50%;        /* Deixa redondinha */
   margin-right: 12px;       
+}
+
+
+
+/*QUEM SOMOS*/
+.sobre{
+    width: 1498px;
+    height: 766px;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    img{
+        width: 432px;
+        height: 408px;
+    }
+}
+
+
+.bloco-visual {
+    position: relative; /* O filho absoluto vai usar isso como base */
+    display: inline-block; /* Garante que o wrapper tenha o tamanho exato da imagem */
+}
+
+.textos{
+    align-self: flex-start;
+    margin-top: 180px;
+
+    .titulo{
+        font-size: 16px;
+        color: #EF6A85;
+    }
+
+    h1{
+        font-family: "PlayfairDisplay";
+        font-weight: 100;
+        font-size: 40px;
+        line-height: 1.0; 
+
+        margin-bottom: 25px;
+
+        span{
+            font-family: "Italianno";
+            color: #EF6A85;
+            font-size: 65px;
+            line-height: 1.0; 
+
+        }
+    }
+
+    p{
+        color: rgba(0, 0, 0, 0.59);
+    }
+}
+
+.destaque-2-ong{ /*se posiciona dentro do wrapper*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #FFF6E5;
+    padding: 17px 35px;
+    border-radius: 13px;
+
+    box-shadow: 3px 15px 27px -1px rgba(239, 106, 133, 0.18);
+
+    position: absolute;
+    
+    /* POSICIONAMENTO RELATIVO À IMAGEM */
+    bottom: -60px;  
+    right: -140px;    
+
+    .numero{
+        font-family: "Poppins", sans-serif;
+        font-size: 43px;
+        color: #EF6A85;
+    }
+
+    .mulheres{
+        color: rgba(0, 0, 0, 0.59);
+    }
 }
