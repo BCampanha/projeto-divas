@@ -10,6 +10,11 @@
 }
 
 @font-face {
+  font-family: "PlayfairDisplay - Medium";
+  src: url("../fonts/PlayfairDisplay-Medium.ttf");
+}
+
+@font-face {
   font-family: "Italianno";
   src: url("../fonts/Italianno-Regular.ttf");
 }
@@ -73,4 +78,66 @@ nav{
     
     }
 
+}
+
+
+/*APRESENTAÇÃO*/
+.apresentacao{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 1498px;
+    height: 807px;
+
+    background-image: url(../images/fundo.png);
+    background-size: cover;
+}
+
+.apresentacao h1{
+    font-family: "PlayfairDisplay - Medium";
+    text-align: center;
+    font-size: 60px;
+    font-weight: 100;
+    line-height: 1.1; /*altura dalinha*/
+
+    margin-bottom: 25px;
+
+span{
+    font-family: "Italianno";
+    color: #EF6A85;
+    font-size: 90px;
+    line-height: 0.5; /*altura dalinha*/
+}
+}
+
+.apresentacao p{
+    text-align: center;
+    color: rgba(0, 0, 0, 0.59); /*opacidade da cor em 59%*/
+    margin-bottom: 20px;
+}
+
+.destaque-ong{
+    font-size: 13px;
+    color: #860F37;
+
+    background-color: rgba(255, 246, 229, 0.69);
+    padding: 10px 24px;
+    border-radius: 50px;
+    border: 2px solid #FFF6E5;
+
+    display: inline-flex; /*alinha a bolinha com o texto*/
+    align-items: center;
+    
+}
+
+.destaque-ong::before {
+  content: "";               /* Elemento vazio, mas visível */
+  display: inline-block;
+  width: 10px;               /* Tamanho da bolinha */
+  height: 10px;
+  background-color: #FFF6E5; 
+  border-radius: 50%;        /* Deixa redondinha */
+  margin-right: 12px;       
 }
