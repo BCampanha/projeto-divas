@@ -17,13 +17,13 @@
 
         <nav>
             <ul>
-                <li><a href="">Sobre</a></li> <!-- como navegar para sessões e não página -->
-                <li><a href="">Serviços</a></li>
-                <li><a href="">Atividades</a></li>
-                <li><a href="">Informações</a></li>
-                <li><a href="">Outros Projetos</a></li>
-                <li><a href="">Agenda</a></li>
-                <li><a href="">Contribuir</a></li>
+                <li><a href="#sobre">Sobre</a></li> <!-- como navegar para sessões e não página -->
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#atividades">Atividades</a></li>
+                <li><a href="#informacao">Informações</a></li>
+                <li><a href="#outros-projetos">Outros Projetos</a></li>
+                <li><a href="#agenda">Agenda</a></li>
+                <li><a href="#contribuir">Contribuir</a></li>
             </ul>
         </nav>
     </header>
@@ -42,7 +42,7 @@
 
 
      <!-- QUEM SOMOS -->
-      <section class="sobre">
+      <section id="sobre" class="sobre">
 
       <div class="bloco-visual"> <!--wrapper que Agrupa a imagem e o destaque-->
         <img src="./images/imagem-1.png" alt="">
@@ -66,7 +66,7 @@
 
 
       <!-- O QUE FAZEMOS -->
-       <section class="servicos">
+       <section id="servicos" class="servicos">
 
         <div class="textos-2">
         <span class="titulo-2">O QUE FAZEMOS</span>
@@ -95,7 +95,7 @@
 
 
        <!-- NOSSO DIA A DIA -->
-       <section class="atividades">
+       <section id="atividades" class="atividades">
 
         <div class="textos-3">
         <span class="titulo-3">NOSSO DIA A DIA</span>
@@ -147,7 +147,7 @@
 
        <!-- SAÚDE E INFORMAÇAO -->
 
-       <section class="informacao">
+       <section id="informacao" class="informacao">
 
         <div class="textos-4">
             <span class="titulo-4">SAÚDE E INFORMAÇÃO</span>
@@ -305,39 +305,73 @@
 
 
        <!-- INICIATIVAS PARCEIRAS -->
-       <section class="outros-projetos">
+       <section id="outros-projetos" class="outros-projetos">
 
-        <span>INICIATIVAS PARCEIRAS</span>
+        <div class="textos-5">
+        <span class="titulo-5">INICIATIVAS PARCEIRAS</span>
 
         <h1>Outros projetos <span>Inspiradores</span></h1>
+        </div>
 
         <div class="conteiner-projetos">
 
+        <a href="https://rfccpr.org.br/" target="_blank" rel="noopener noreferrer" class="card-link">
             <div class="projeto-1">
-                <img src="./images/projeto-1.png" alt="">
 
-                <span class="area"> CONHECIMENTO E CONSCIENTIZAÇÃO</span>
+                <!-- parte de cima  (gradiente)-->
+                <div class="gradiente">
+                    <img src="./images/projeto-1.png" alt="">
+               </div>
+                
+               <!-- parte de baixo (branca)-->
+                <div class="detalhes">
+                <span> CONHECIMENTO E CONSCIENTIZAÇÃO</span>
 
-                <strong class="nome-projeto">Rede Feminina de Combate ao Câncer</strong>
+                <strong>Rede Feminina de Combate ao Câncer</strong>
                 
                 <p>A ONG existe há cerca de 72 anos, promovendo o conhecimento e a conscientização para mulheres sobre a prevenção e o diagnóstico do câncer.</p>
+                </div>
+
             </div>
+        </a>
 
+
+         <a href="https://oncomovimento.com.br/quem-somos/" target="_blank" rel="noopener noreferrer" class="card-link">
             <div class="projeto-2">
-                <img src="./images/projeto-2.png" alt="">
+                
+                <div class="gradiente">
+                    <img src="./images/projeto-2.png" alt="">
+                </div>
 
+                <div class="detalhes">
                 <span class="area">SAÚDE E APOIO</span>
 
                 <strong class="nome-projeto"> Onco Movimento</strong>
+
+                <p>Criada apelas fisioterapeutas, Kamila e Tania, a ONG incentiva a prática de atividades físicas como forma de reduzir a fadiga causada pelo tratamento do câncer.</p>
+                </div>
+
             </div>    
+        </a>
 
+
+        <a href="https://ongfiodeluz.org.br/" target="_blank" rel="noopener noreferrer" class="card-link">
              <div class="projeto-3">
-                <img src="./images/projeto-3.png" alt="">
 
+                <div class="gradiente">
+                    <img src="./images/projeto-3.png" alt="">    
+                </div>
+
+                <div class="detalhes">
                 <span class="area">AUTOESTIMA E CUIDADO</span>
 
                 <strong class="nome-projeto">Fio de Luz</strong>
+
+                <p>A ONG Fio de Luz é voltada para a doação de perucas para crianças e adultos em tratamento de câncer.</p>
+                </div>
+
             </div>
+        </a>
             
         </div>
        </section>
@@ -345,7 +379,7 @@
 
 
        <!-- ÁREA EXCLUSIVA -->
-        <section class="agenda">
+        <section id="agenda" class="agenda">
 
             <span>ÁREA EXCLUSIVA</span>
 
@@ -409,7 +443,7 @@
 
 
         <!-- FAÇA PARTE -->
-         <section class="contribuir">
+         <section id="contribuir" class="contribuir">
 
             <span>FAÇA PARTE </span>
 
@@ -489,8 +523,8 @@
 
 
 
-         <script src="./atividades.js"></script> 
-         <script src="./informacoes.js"></script>
+         <script src="./js/atividades.js"></script> 
+         <script src="./js/informacoes.js"></script>
 
 </body>
 </html>

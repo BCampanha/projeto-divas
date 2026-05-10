@@ -43,6 +43,17 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+
+}
+
+/* Ativa a rolagem suave em toda a página */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Compensa a altura do header fixo para o conteúdo não ficar escondido */
+section {
+  scroll-margin-top: 30px; /* Ajuste conforme a altura real do seu header */
 }
 
 
@@ -198,6 +209,7 @@ span{
         line-height: 1.0; 
 
         margin-bottom: 25px;
+        margin-top: 30px;
 
         span{
             font-family: "Italianno", sans-serif;
@@ -288,6 +300,7 @@ span{
         line-height: 1.5; 
 
         margin-bottom: 25px;
+        margin-top: 30px;
 
         span{
             font-family: "Italianno", sans-serif;
@@ -411,7 +424,7 @@ span{
     letter-spacing: 0.1em;
     text-transform: uppercase;
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
 }
  
 .textos-3 h1 {
@@ -542,6 +555,7 @@ span{
         font-size: 40px;
         
         margin-bottom: 10px;
+        margin-top: 30px;
 
         span{
             font-family: "Italianno", sans-serif;
@@ -646,7 +660,202 @@ span{
 
 
 
+/* INICIATIVAS PARCEIRAS */
+.outros-projetos{
+    max-width: 1498px;
+    width: calc(100% - 40px); 
+    margin: 0 auto;
+    height: 766px;
 
+    background-color: #FFC6C5;
+    border-radius: 14px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+     padding-top: 80px;
+     padding-left: 80px;
+
+    margin-bottom: 30px;
+}
+
+.textos-5{
+    .titulo-5{
+        font-size: 13px;
+        color: #EF6A85;
+    }
+
+    h1{
+        font-family: "PlayfairDisplay", sans-serif;
+        font-weight: 100;
+        font-size: 40px;
+        line-height: 1.0; 
+
+        margin-bottom: 80px;
+        margin-top: 30px;
+
+        span{
+            font-family: "Italianno", sans-serif;
+            color: #EF6A85;
+            font-size: 65px;
+            line-height: 1.0; 
+
+        }
+    }
+
+    p{
+        color: rgba(0, 0, 0, 0.59);
+    }
+}
+
+.conteiner-projetos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 30px;
+}
+
+.card-link {
+    text-decoration: none;      /* Remove sublinhado */
+    color: inherit;             /* Mantém as cores originais do card */
+    display: block;             /* Garante que ocupe o espaço correto */
+    cursor: pointer;            /* Mãozinha ao passar o mouse */
+}
+
+
+
+/*Efeito visual ao passar o mouse */
+.card-link:hover .projeto-1 {
+    transform: translateY(-7px); /* Sobe levemente */
+    transition: transform 0.5s ease;
+}
+
+.card-link:hover .projeto-2 {
+    transform: translateY(-7px); /* Sobe levemente */
+    transition: transform 0.5s ease;
+}
+
+.card-link:hover .projeto-3 {
+    transform: translateY(-7px); /* Sobe levemente */
+    transition: transform 0.5s ease;
+}
+
+
+
+.projeto-1 {
+    display: flex;
+    flex-direction: column;
+    
+    border-radius: 23px;
+    overflow: hidden; /* corta os filhos nos cantos arredondados */ 
+    box-shadow: 0 7px 17px 0 rgba(239, 106, 133, 0.57);
+
+    .gradiente {
+        background: linear-gradient(135deg, #FFC6C5, #EF6A85);
+    
+        /* O padding agora fica aqui, para o conteúdo ter respiro */
+        padding: 40px 20px; 
+    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    img{
+        width: 150px;
+        height: 114px;
+        object-fit: contain;
+    }
+}
+
+}
+
+.projeto-2 {
+    display: flex;
+    flex-direction: column;
+    
+    border-radius: 23px;
+    overflow: hidden; /* corta os filhos nos cantos arredondados */ 
+    box-shadow: 0 7px 17px 0 rgba(239, 106, 133, 0.57);
+
+    .gradiente {
+        background: linear-gradient(135deg, #FFF6E5, #FFC6C5);
+    
+        /* O padding agora fica aqui, para o conteúdo ter respiro */
+        padding: 40px 20px; 
+    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    img{
+        width: 254px;
+        height: 114px;
+        object-fit: contain;
+    }
+}
+
+}
+
+
+.projeto-3 {
+    display: flex;
+    flex-direction: column;
+    
+    border-radius: 23px;
+    overflow: hidden; /* corta os filhos nos cantos arredondados */ 
+    box-shadow: 0 7px 17px 0 rgba(239, 106, 133, 0.57);
+
+    .gradiente {
+        background: linear-gradient(135deg, #E9D7F5, #CBABE1);
+    
+        /* O padding agora fica aqui, para o conteúdo ter respiro */
+        padding: 40px 20px; 
+    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    img{
+        width: 137px;
+        height: 131px;
+    }
+
+    
+}
+
+}
+
+
+.detalhes {
+    background-color: #FFFFFF;
+    padding: 20px; 
+    
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    span{
+        font-family: "Nunito-Medium", sans-serif;
+        font-size: 12px;
+        color: rgba(0, 0, 0, 0.59);
+    }
+
+    strong{
+        font-size: 13px;
+        color: #333;
+    }
+
+    p{
+        font-size: 14px;
+        color: rgba(0, 0, 0, 0.6);
+        margin: 0;
+        text-align: justify;
+        max-width: 310px;
+        max-height: 360px;
+    }
+}
 
 
 
