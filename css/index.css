@@ -38,7 +38,7 @@
 }
 
 body{
-    font-family: "Nunito";
+    font-family: "Nunito", sans-serif;
 
     display: flex;
     flex-direction: column;
@@ -72,7 +72,7 @@ header{
         }
 
         span{
-            font-family: "PlayfairDisplay";
+            font-family: "PlayfairDisplay", sans-serif;
         }
     }
 }
@@ -111,7 +111,7 @@ nav{
 }
 
 .apresentacao h1{
-    font-family: "PlayfairDisplay - Medium";
+    font-family: "PlayfairDisplay - Medium", sans-serif;
     text-align: center;
     font-size: 60px;
     font-weight: 100;
@@ -120,7 +120,7 @@ nav{
     margin-bottom: 25px;
 
 span{
-    font-family: "Italianno";
+    font-family: "Italianno", sans-serif;
     color: #EF6A85;
     font-size: 90px;
     line-height: 0.5; /*altura dalinha*/
@@ -192,7 +192,7 @@ span{
     }
 
     h1{
-        font-family: "PlayfairDisplay";
+        font-family: "PlayfairDisplay", sans-serif;
         font-weight: 100;
         font-size: 40px;
         line-height: 1.0; 
@@ -200,7 +200,7 @@ span{
         margin-bottom: 25px;
 
         span{
-            font-family: "Italianno";
+            font-family: "Italianno", sans-serif;
             color: #EF6A85;
             font-size: 65px;
             line-height: 1.0; 
@@ -282,7 +282,7 @@ span{
     }
 
     h1{
-        font-family: "PlayfairDisplay";
+        font-family: "PlayfairDisplay", sans-serif;
         font-weight: 100;
         font-size: 40px;
         line-height: 1.5; 
@@ -290,7 +290,7 @@ span{
         margin-bottom: 25px;
 
         span{
-            font-family: "Italianno";
+            font-family: "Italianno", sans-serif;
             color: #EF6A85;
             font-size: 65px;
             line-height: 1.5; 
@@ -325,7 +325,7 @@ span{
 }
 
 .acolhimento-emocional span{
-    font-family: "Nunito-Medium";
+    font-family: "Nunito-Medium", sans-serif;
     font-weight: 600;
     color:#860F37 ;
 
@@ -362,7 +362,7 @@ span{
 }
 
 .rede-de-apoio span{
-    font-family: "Nunito-Medium";
+    font-family: "Nunito-Medium", sans-serif;
     font-weight: 600;
     color:#860F37 ;
 
@@ -387,7 +387,6 @@ span{
     max-width: 1498px;
     width: calc(100% - 40px); 
     margin: 0 auto;
-   
  
     background-color: #FFF6E5;
     border-radius: 14px;
@@ -397,6 +396,8 @@ span{
     align-items: flex-start;
  
     padding: 80px 80px 60px 80px;
+
+    margin-bottom: 30px;
 }
  
 /* TEXTOS */
@@ -423,7 +424,7 @@ span{
 }
  
 .textos-3 h1 span {
-    font-family: "Italianno", cursive;
+    font-family: "Italianno", sans-serif;
     color: #EF6A85;
     font-size: 65px;
     line-height: 1.0;
@@ -431,8 +432,6 @@ span{
  
 .textos-3 p {
     color: rgba(0, 0, 0, 0.55);
-    font-size: 0.95rem;
-    font-weight: 300;
     line-height: 1.7;
 }
  
@@ -448,11 +447,12 @@ span{
     padding: 6px 22px;
     border: 1.5px solid #E9D7F5;
     border-radius: 100px;
+
     background: transparent;
     cursor: pointer;
+
     font-size: 0.85rem;
     font-family: inherit;
-    color: #5c3548;
     transition: all 0.2s ease;
 }
  
@@ -501,14 +501,169 @@ span{
     display: block;
 }
 
-
- 
-/* ESCONDER card sem deixar espaço vazio no grid */
 .card-grande.hide,
 .card-pequeno.hide {
-    display: none;
+    display: none; /* ESCONDER card sem deixar espaço vazio no grid */
 }
  
+
+
+/* SAÚDE E INFORMAÇÃO */
+
+.informacao{
+    max-width: 1498px;
+    width: calc(100% - 40px); 
+    margin: 0 auto;
+    height: 811px;
+    background-color: #FFFFFF;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 80px 0 80px 0;
+
+    gap: 60px;
+
+    border-radius: 14px;
+    box-sizing: border-box; /* Garante que padding não aumente a altura */
+
+}
+
+.textos-4{
+
+    .titulo-4{
+        font-size: 13px;
+        color: #EF6A85;
+    }
+
+    h1{
+        font-family: "PlayfairDisplay", sans-serif;
+        font-weight: 100;
+        font-size: 40px;
+        
+        margin-bottom: 10px;
+
+        span{
+            font-family: "Italianno", sans-serif;
+            color: #EF6A85;
+            font-size: 65px;
+  
+
+        }
+    }
+
+    p{
+        color: rgba(0, 0, 0, 0.55);
+        line-height: 1.7;
+        margin-bottom: 30px;
+    }
+}
+
+.opcoes-2{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .botao-opcoes-2{
+        padding: 6px 22px;
+        border: 1.5px solid #E9D7F5;
+        border-radius: 100px;
+
+        background: transparent;
+        cursor: pointer;
+    
+        font-size: 0.85rem;
+        font-family: inherit;
+        transition: all 0.2s ease;
+    }
+}
+
+.botao-opcoes-2.active,
+.botao-opcoes-2:hover {
+    background-color: #E9D7F5;
+    border-color: #E9D7F5;
+}
+
+
+
+.cards-container{ /* Container dos cards com altura fixa e scroll */
+    display: flex;
+    flex-direction: column; 
+    gap: 20px; /* Espaço entre os cards */
+    
+    height: 650px; /* Altura fixa do card principal*/
+    overflow-y: auto; /* Scroll vertical*/
+
+    padding-right: 10px; /* Espaço para a barra de rolagem */
+    padding-bottom: 20px; /* Espaço extra embaixo */
+      /* Garante que o padding não aumente a height */
+    box-sizing: border-box; 
+    
+    /* Estilização da barra de rolagem */
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: #EF6A85 rgba(239, 106, 133, 0.1);
+}
+
+/* Estilização da barra para Chrome/Safari/Edge */
+.cards-container::-webkit-scrollbar { width: 8px; }
+
+.cards-container::-webkit-scrollbar-track { background: rgba(239, 106, 133, 0.1); border-radius: 10px; }
+
+.cards-container::-webkit-scrollbar-thumb { background-color: #EF6A85; border-radius: 10px; }
+
+.cards-container::-webkit-scrollbar-thumb:hover { background-color: #d45a75; }
+
+/* Estilo dos cards */
+.card-info {
+    width: 100%;
+    max-width: 480px;
+
+    flex: 0 0 auto; /* Não estica, mantém altura do conteúdo */
+    background-color: #FFF6E5;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 3px 5px 4px 0px rgba(239, 106, 133, 0.5);
+    
+    /* Tipografia */
+    font-family: "Nunito", sans-serif;
+}
+
+.card-info strong {
+    display: block;
+    color: #860F37;
+    font-family: "Nunito-Medium", sans-serif;
+    font-size: 16px;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.card-info p {
+    color: rgba(134, 15, 55, 0.68);
+    font-size: 14px;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -560,7 +715,7 @@ footer{
 
         span{
             color: #FFF6E5;
-            font-family: "PlayfairDisplay";
+            font-family: "PlayfairDisplay", sans-serif;
         }
     }
 

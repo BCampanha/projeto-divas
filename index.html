@@ -149,25 +149,29 @@
 
        <section class="informacao">
 
-        <span>SAÚDE E INFORMAÇÃO</span>
+        <div class="textos-4">
+            <span class="titulo-4">SAÚDE E INFORMAÇÃO</span>
 
-        <h1>Conhecimentos que <span>tranforma</span></h1>
+            <h1>Conhecimentos que <br><span>tranformam</span></h1>
 
-        <p>Acesso a conteúdos verificados sobre câncer, tratamentos, efeitos colaterais e cuidados durante a jornada oncológica</p>
+            <p>Acesso a conteúdos verificados sobre câncer, tratamentos,<br> efeitos colaterais e cuidados durante a jornada oncológica</p>
 
-        <div class="opcoes">
+            <div class="opcoes-2">
 
-            <span>Tipos de câncer</span>
+                <button class="botao-opcoes-2 active" data-filter="tipos">Tipos de câncer</button>
 
-            <span>Tratamentos</span>
+                <button class="botao-opcoes-2" data-filter="tratamentos">Tratamentos</button>
 
-            <span>Bem-estar</span>
+                <button class="botao-opcoes-2" data-filter="bem-estar">Bem-estar</button>
 
-            <span>Direitos</span>
+                <button class="botao-opcoes-2" data-filter="direitos">Direitos</button>
 
+            </div>
         </div>
 
-        <div class="cancer-info">
+        
+
+        <div id="tipos" class="cards-container">
               
             <div class="card-info">
                 <strong>O que é o câncer de mama?</strong>
@@ -200,30 +204,30 @@
         </div>
 
 
-        <div class="cards-tratamentos">
+        <div id="tratamentos" class="cards-container" style="display: none;">
             
-            <div class="info-1">
+            <div class="card-info">
                 <strong>Quimioterapia não é igual para todos</strong>
 
                 <p>A quimioterapia não é um único medicamento — é uma classe com dezenas de protocolos diferentes. Alguns são tomados em comprimido em casa; outros são aplicados em hospital-dia. A duração, os efeitos colaterais e a frequência variam completamente conforme o tipo de câncer e o estágio. Dizer "faz quimio" sem mais detalhes é como dizer "toma remédio" sem especificar qual.
                 </p>
             </div>
 
-            <div class="info-2">
+            <div class="card-info">
                 <strong>Radioterapia não torna a pessoa radioativa</strong>
 
                 <p>Uma das maiores crenças equivocadas é que quem faz radioterapia emite radiação e oferece risco para crianças e grávidas ao redor. Isso não é verdade. A radiação atua apenas durante a sessão, dentro do aparelho. A paciente sai da sessão sem nenhuma radiação acumulada no corpo e pode ter contato normal com qualquer pessoa.
                 </p>
             </div>
 
-            <div class="info-3">
+            <div class="card-info">
                 <strong>Imunoterapia e terapia-alvo são diferentes da quimio</strong>
 
                 <p>Nos últimos 10 anos surgiram tratamentos que não destroem células indiscriminadamente — eles ensinam o sistema imune a reconhecer o tumor (imunoterapia) ou bloqueiam proteínas específicas que alimentam o câncer (terapia-alvo). Os efeitos colaterais são diferentes e, em geral, mais toleráveis. Nem todo hospital oferta essas opções, mas é direito da paciente perguntar se são aplicáveis ao seu caso.
                 </p>
             </div>
 
-            <div class="info-4">
+            <div class="card-info">
                 <strong>Interromper o tratamento por conta própria aumenta o risco de recidiva</strong>
 
                 <p>O estadiamento (de 0 a IV) não serve apenas para "saber a gravidade" — ele define diretamente o protocolo de tratamento. Estágio 0 (in situ) pode ser tratado só com cirurgia local. Estágio IV (metastático) é tratado com foco em controle e qualidade de vida, não em cura. Entender isso ajuda a família a alinhar expectativas com a realidade clínica.Muitas pacientes interrompem a hormonioterapia (como o tamoxifeno) por causa dos efeitos colaterais sem avisar o médico. Esse é um dos fatores mais associados à recidiva do câncer de mama hormônio-dependente. O correto é comunicar os efeitos — há alternativas de medicamento, ajuste de dose ou manejo dos sintomas — nunca parar sozinha.
@@ -232,30 +236,30 @@
 
         </div>
 
-         <div class="bemEstar-info">
+         <div id="bem-estar" class="cards-container" style="display: none;">
             
-            <div class="info-1">
+            <div class="card-info">
                 <strong>Fadiga oncológica não é "cansaço normal"</strong>
 
                 <p>A fadiga causada pelo câncer e seus tratamentos é diferente do cansaço comum — ela não melhora com descanso, pode durar meses após o fim do tratamento e afeta memória, concentração e humor. Tem nome clínico: síndrome da fadiga relacionada ao câncer. Ignorá-la ou minimizá-la com frases como "descanse mais" é inadequado. Existem protocolos de manejo específicos.
                 </p>
             </div>
 
-            <div class="info-2">
+            <div class="card-info">
                 <strong>Exercício físico é recomendado, não proibido</strong>
 
                 <p>Ao contrário do que muitos imaginam, atividade física moderada durante o tratamento oncológico é indicada e benéfica — reduz fadiga, melhora humor, preserva massa muscular e pode melhorar a resposta ao tratamento. O que precisa de avaliação médica é a intensidade e o tipo de exercício, não a prática em si. Repouso absoluto prolongado piora o quadro.
                 </p>
             </div>
 
-            <div class="info-3">
+            <div class="card-info">
                 <strong>Saúde mental faz parte do protocolo de tratamento</strong>
 
                 <p>Ansiedade e depressão afetam entre 30% e 40% das pacientes com câncer, mas menos da metade recebe apoio psicológico. Isso não é fraqueza — é uma resposta fisiológica e emocional ao diagnóstico. Além disso, há evidências de que o suporte emocional adequado melhora a adesão ao tratamento e os desfechos clínicos. Pedir acompanhamento psicológico é parte do cuidado, não um extra.
                 </p>
             </div>
 
-            <div class="info-4">
+            <div class="card-info">
                 <strong>"Pensar positivo" não cura câncer</strong>
 
                 <p>A ideia de que a atitude mental determina o resultado do tratamento é falsa e, além de cientificamente incorreta, prejudica as pacientes — cria culpa em quem atravessa momentos de tristeza, medo ou raiva. Emoções negativas não agravam o câncer. O que importa é ter suporte emocional real, não performar otimismo.
@@ -265,30 +269,30 @@
         </div>
 
 
-        <div class="direitos-info">
+        <div id="direitos" class="cards-container" style="display: none;">
             
-            <div class="info-1">
+            <div class="card-info">
                 <strong>O SUS é obrigado a fornecer o tratamento oncológico completo</strong>
 
                 <p>Pelo artigo 196 da Constituição e pela Política Nacional de Atenção Oncológica, o SUS deve garantir diagnóstico, tratamento, reabilitação e cuidados paliativos para pacientes com câncer. Isso inclui cirurgia, quimioterapia, radioterapia, hormônioterapia e medicamentos da RENAME/RENAME Oncológica. A negativa de atendimento pode ser contestada judicialmente.
                 </p>
             </div>
 
-            <div class="info-2">
+            <div class="card-info">
                 <strong>A Lei 9.656 obriga planos de saúde a cobrir o tratamento</strong>
 
                 <p>Planos de saúde são proibidos por lei de negar cobertura para tratamentos oncológicos com registro na ANVISA. Isso inclui medicamentos orais de uso domiciliar (como capecitabina e tamoxifeno), imunoterapia e terapia-alvo quando prescritas. Negativas com justificativa de "rol de procedimentos" ou "experimental" podem ser contestadas na ANS ou na Justiça — e há vasta jurisprudência favorável às pacientes.
                 </p>
             </div>
 
-            <div class="info-3">
+            <div class="card-info">
                 <strong>Paciente em tratamento tem direito ao afastamento do trabalho sem perda de vínculo</strong>
 
                 <p>Durante o tratamento, a paciente pode ser afastada pelo INSS por doença (auxílio-doença ou aposentadoria por invalidez temporária). Além disso, demitir uma funcionária por estar em tratamento oncológico é considerado discriminação e pode gerar reintegração ao emprego e indenização. A Lei 9.029/1995 e a jurisprudência do TST protegem esses casos.
                 </p>
             </div>
 
-            <div class="info-4">
+            <div class="card-info">
                 <strong>Há isenção de IR, IPVA e saque do FGTS para pacientes com câncer</strong>
 
                 <p>Pessoas com diagnóstico de neoplasia maligna têm direito a: isenção de Imposto de Renda sobre proventos de aposentadoria, isenção de IPVA em muitos estados, saque imediato do FGTS e do PIS/PASEP, e prioridade em processos judiciais. Esses direitos existem independente de renda e muitas pacientes nunca são informadas sobre eles pela equipe de saúde.
@@ -482,6 +486,11 @@
 
          </footer>
 
-         <script src="./script.js"></script> 
+
+
+
+         <script src="./atividades.js"></script> 
+         <script src="./informacoes.js"></script>
+
 </body>
 </html>
