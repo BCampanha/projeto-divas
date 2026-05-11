@@ -865,6 +865,7 @@ span{
     margin: 0 auto;
     height: 811px;
     background-color: #FFF6E5;
+    margin-bottom: 30px;
 
     display: flex;
     justify-content: space-between;
@@ -933,10 +934,11 @@ span{
 
         .regular{
             color: rgba(239, 106, 133, 0.57);
+            font-size: 13px;
         }
         .negrito{
             color: #EF6A85;
-
+            font-size: 15px;
         }
     }
 
@@ -949,6 +951,10 @@ span{
         background-color: #E9D7F5;
         padding: 10px 16px;
         border-radius: 15px;
+        
+        .data{
+            font-size: 13px;
+        }    
     }
 }
 
@@ -987,7 +993,7 @@ form {
         color: #EF6A85;
     }
 
-    a{
+    .cadastrar{
         text-decoration: none;
         color: #EF6A85;
         font-weight: 600;
@@ -1002,6 +1008,91 @@ input:hover{
 button:hover{
     border: 1px solid #860F37;
 }
+
+.cadastrar:hover{
+    color: black;
+}
+
+
+
+
+
+
+/* FAÇA PARTE */
+
+.contribuir{
+    max-width: 1498px;
+    width: calc(100% - 40px); 
+    margin: 0 auto;
+    height: 593px;
+    background-image: url(/images/fundo-2.png);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
+    box-sizing: border-box;
+
+    img{
+        width:100%;
+    }
+}
+
+
+    .titulo-7{
+        font-size: 13px;
+        color: #FFC6C5;
+    }
+
+    .titulo-8{
+        font-family: "PlayfairDisplay", sans-serif;
+        font-weight: 100;
+        font-size: 40px;
+        line-height: 1.0; 
+
+        margin-bottom: 10px;
+        margin-top: 30px;
+
+        color: #FFF6E5;
+
+        span{
+            font-family: "Italianno", sans-serif;
+            color: #FFC6C5;
+            font-size: 65px;
+            line-height: 1.0; 
+
+        }
+    }
+
+    .paragrafo{
+        color: #FFF6E5;
+        text-align: center;
+    }
+
+.botoes{
+    display: flex;
+    margin-top: 30px;
+    gap: 20px;
+    
+    .bt-contribuir{
+        padding: 16px 30px;
+        border: 1px solid #FFC6C5;
+        border-radius: 30px;
+        text-decoration: none;
+        color: #FFC6C5;
+    }
+}
+
+.bt-contribuir.active,
+.bt-contribuir:hover {
+    background-color: #FFC6C5;
+    color: #8C3B52;
+}
+
+
 
 
 
@@ -1018,7 +1109,8 @@ footer{
     justify-content: center;
     align-content: center;
 
-    width: 100%;
+   width: calc(100% - 40px); 
+margin: 0 auto;
   
     padding: 22px;
 }
