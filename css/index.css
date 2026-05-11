@@ -759,7 +759,7 @@ nav {
     align-items: center;
     gap: 20px;
     background-color: #fff;
-    padding: 13px;
+    padding: 10px;
     border-radius: 20px;
     width: 430px;
 
@@ -783,8 +783,8 @@ nav {
         align-items: center;
         justify-content: center;
         background-color: #E9D7F5;
-        padding: 10px 16px;
-        border-radius: 15px;
+        padding: 10px 14px;
+        border-radius: 13px;
         
         .data { font-size: 13px; }    
     }
