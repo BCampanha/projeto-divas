@@ -1,0 +1,1021 @@
+/* =========================================
+   1. CONFIGURAÇÕES GERAIS E FONTES
+   ========================================= */
+
+@font-face {
+  font-family: "Nunito";
+  src: url("../fonts/Nunito-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Nunito-Medium";
+  src: url("../fonts/Nunito-Medium.ttf");
+}
+
+@font-face {
+  font-family: "PlayfairDisplay";
+  src: url("../fonts/PlayfairDisplay-Regular.ttf");
+}
+
+@font-face {
+  font-family: "PlayfairDisplay - Medium";
+  src: url("../fonts/PlayfairDisplay-Medium.ttf");
+}
+
+@font-face {
+  font-family: "Italianno";
+  src: url("../fonts/Italianno-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("../fonts/Poppins-Medium.ttf");
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Nunito", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+html {
+    scroll-behavior: smooth; /* Rolagem suave */
+}
+
+section {
+    scroll-margin-top: 30px; /* Compensa o header fixo */
+}
+
+/* =========================================
+   2. HEADER & NAVEGAÇÃO
+   ========================================= */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 90px;
+    position: fixed;
+    background-color: #ffffff;
+    z-index: 1000;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+
+    .logo {
+        display: flex;
+        align-items: center;
+
+        img {
+            width: 58px;
+            height: 49px;
+        }
+
+        span {
+            font-family: "PlayfairDisplay", sans-serif;
+        }
+    }
+}
+
+nav {
+    ul {
+        list-style: none;
+        display: flex;
+        
+        li {
+            margin: 10px;
+
+            a {
+                text-decoration: none;
+                color: #000;
+            }
+        }
+    }
+}
+
+/* =========================================
+   3. APRESENTAÇÃO (HERO)
+   ========================================= */
+
+.apresentacao {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 1498px;
+    height: 807px;
+    background-image: url(../images/fundo.png);
+    background-size: cover;
+
+    h1 {
+        font-family: "PlayfairDisplay - Medium", sans-serif;
+        text-align: center;
+        font-size: 60px;
+        font-weight: 100;
+        line-height: 1.1;
+        margin-bottom: 25px;
+
+        span {
+            font-family: "Italianno", sans-serif;
+            color: #EF6A85;
+            font-size: 90px;
+            line-height: 0.5;
+        }
+    }
+
+    p {
+        text-align: center;
+        color: rgba(0, 0, 0, 0.59);
+        margin-bottom: 20px;
+    }
+}
+
+.destaque-ong {
+    font-size: 13px;
+    color: #860F37;
+    background-color: rgba(255, 246, 229, 0.69);
+    padding: 10px 24px;
+    border-radius: 50px;
+    border: 2px solid #FFF6E5;
+    display: inline-flex;
+    align-items: center;
+    
+    /* Bolinha decorativa */
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background-color: #FFF6E5; 
+      border-radius: 50%;
+      margin-right: 12px;       
+    }
+}
+
+/* =========================================
+   4. QUEM SOMOS
+   ========================================= */
+
+.sobre {
+    max-width: 1498px;
+    width: calc(100% - 40px); 
+    margin: 0 auto;
+    height: 766px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    img {
+        width: 432px;
+        height: 408px;
+    }
+}
+
+.bloco-visual {
+    position: relative;
+    display: inline-block;
+}
+
+.textos {
+    align-self: flex-start;
+    margin-top: 180px;
+
+    .titulo {
+        font-size: 13px;
+        color: #EF6A85;
+    }
+
+    h1 {
+        font-family: "PlayfairDisplay", sans-serif;
+        font-weight: 100;
+        font-size: 40px;
+        line-height: 1.0; 
+        margin-bottom: 25px;
+        margin-top: 30px;
+
+        span {
+            font-family: "Italianno", sans-serif;
+            color: #EF6A85;
+            font-size: 65px;
+            line-height: 1.0; 
+        }
+    }
+
+    p {
+        color: rgba(0, 0, 0, 0.59);
+    }
+}
+
+.destaque-2-ong {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFF6E5;
+    padding: 17px 35px;
+    border-radius: 13px;
+    box-shadow: 3px 15px 27px -1px rgba(239, 106, 133, 0.18);
+    position: absolute;
+    bottom: -60px;  
+    right: -140px;    
+
+    .numero {
+        font-family: "Poppins", sans-serif;
+        font-size: 43px;
+        color: #EF6A85;
+    }
+
+    .mulheres {
+        color: rgba(0, 0, 0, 0.59);
+    }
+}
+
+/* =========================================
+   5. O QUE FAZEMOS (SERVIÇOS)
+   ========================================= */
+
+.servicos {
+    max-width: 1498px;
+    width: calc(100% - 40px); 
+    margin: 0 auto;
+    height: 766px;
+    background-color: #E9D7F5;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 80px;
+    margin-bottom: 30px;
+}
+
+.textos-2 {
+    align-self: flex-start;
+    margin-left: 120px;
+
+    .titulo-2 {
+        font-size: 13px;
+        color: #EF6A85;
+    }
+
+    h1 {
+        font-family: "PlayfairDisplay", sans-serif;
+        font-weight: 100;
+        font-size: 40px;
+        line-height: 1.5; 
+        margin-bottom: 25px;
+        margin-top: 30px;
+
+        span {
+            font-family: "Italianno", sans-serif;
+            color: #EF6A85;
+            font-size: 65px;
+            line-height: 1.5; 
+        }
+    }
+}
+
+.conteiner {
+    display: flex;
+    align-items: center;
+    margin-top: 80px;
+}
+
+/* Estilos compartilhados para os cards de serviços */
+.acolhimento-emocional, .rede-de-apoio {
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    padding: 30px;
+    border-radius: 20px;
+    margin: 0 15px;
+
+    span {
+        font-family: "Nunito-Medium", sans-serif;
+        font-weight: 600;
+        color: #860F37;
+        margin-bottom: 18px;
+    }
+
+    p {
+        color: rgba(134, 15, 55, 0.68);
+        text-align: left;
+        max-width: 250px;
+        line-height: 1.6;
+    }
+
+    img {
+        width: 74px;
+        height: 74px;
+        margin-bottom: 23px;
+    }
+}
+
+/* Ajuste específico para o word-spacing da segunda rede */
+.rede-de-apoio p {
+    word-spacing: 5px;
+}
+
+.acolhimento-emocional p {
+    word-spacing: 16px; /* Valor final definido anteriormente */
+}
+
+/* =========================================
+   6. NOSSO DIA A DIA (ATIVIDADES)
+   ========================================= */
+
+.atividades {
+    max-width: 1498px;
+    width: calc(100% - 40px); 
+    margin: 0 auto;
+    background-color: #FFF6E5;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 80px 80px 60px 80px;
+    margin-bottom: 30px;
+}
+ 
+.textos-3 {
+    margin-bottom: 40px;
+
+    .titulo-3 {
+        font-size: 13px;
+        color: #EF6A85;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        display: block;
+        margin-bottom: 30px;
+    }
+     
+    h1 {
+        font-family: "PlayfairDisplay", serif;
+        font-weight: 400;
+        font-size: 40px;
+        line-height: 1.1;
+        margin-bottom: 20px;
+        color: #2d1a22;
+
+        span {
+            font-family: "Italianno", sans-serif;
+            color: #EF6A85;
+            font-size: 65px;
+            line-height: 1.0;
+        }
+    }
+     
+    p {
+        color: rgba(0, 0, 0, 0.55);
+        line-height: 1.7;
+    }
+}
+
+.atividades .opcoes {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 40px;
+}
+ 
+.botao-opcoes {
+    padding: 6px 22px;
+    border: 1.5px solid #E9D7F5;
+    border-radius: 100px;
+    background: transparent;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-family: inherit;
+    transition: all 0.2s ease;
+
+    &.active, &:hover {
+        background-color: #E9D7F5;
+        border-color: #E9D7F5;
+    }
+}
+ 
+.grid-imagens {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    grid-template-rows: auto;
+    gap: 16px;
+    width: 100%;
+    max-width: 850px;
+    margin: auto;
+}
+
+.card-grande {
+    grid-row: span 2;
+    border-radius: 16px;
+    overflow: hidden;
+    background-color: #fff;
+    height: 488px;  
+}
+ 
+.card-pequeno {
+    border-radius: 16px;
+    overflow: hidden;
+    background-color: #fff;
+    height: 244px;     
+}
+ 
+.card-grande img,
+.card-pequeno img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.card-grande.hide,
+.card-pequeno.hide {
+    display: none;
+}
+
+/* =========================================
+   7. SAÚDE E INFORMAÇÃO
+   ========================================= */
+
+.informacao {
+    max-width: 1498px;
+    width: calc(100% - 40px); 
+    margin: 0 auto;
+    height: 811px;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding: 80px 0;
+    gap: 60px;
+    border-radius: 14px;
+    box-sizing: border-box;
+}
+
+.textos-4 {
+    .titulo-4 {
+        font-size: 13px;
+        color: #EF6A85;
+    }
+
+    h1 {
+        font-family: "PlayfairDisplay", sans-serif;
+        font-weight: 100;
+        font-size: 40px;
+        margin-bottom: 10px;
+        margin-top: 30px;
+
+        span {
+            font-family: "Italianno", sans-serif;
+            color: #EF6A85;
+            font-size: 65px;
+        }
+    }
+
+    p {
+        color: rgba(0, 0, 0, 0.55);
+        line-height: 1.7;
+        margin-bottom: 30px;
+    }
+}
+
+.opcoes-2 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .botao-opcoes-2 {
+        padding: 6px 22px;
+        border: 1.5px solid #E9D7F5;
+        border-radius: 100px;
+        background: transparent;
+        cursor: pointer;
+        font-size: 0.85rem;
+        font-family: inherit;
+        transition: all 0.2s ease;
+
+        &.active, &:hover {
+            background-color: #E9D7F5;
+            border-color: #E9D7F5;
+        }
+    }
+}
+
+.cards-container {
+    display: flex;
+    flex-direction: column; 
+    gap: 20px; 
+    height: 650px; 
+    overflow-y: auto; 
+    padding-right: 10px;
+    padding-bottom: 20px;
+    box-sizing: border-box; 
+    scrollbar-width: thin; 
+    scrollbar-color: #EF6A85 rgba(239, 106, 133, 0.1);
+
+    /* Barra de rolagem (Chrome/Safari/Edge) */
+    &::-webkit-scrollbar { width: 8px; }
+    &::-webkit-scrollbar-track { background: rgba(239, 106, 133, 0.1); border-radius: 10px; }
+    &::-webkit-scrollbar-thumb { background-color: #EF6A85; border-radius: 10px; }
+    &::-webkit-scrollbar-thumb:hover { background-color: #d45a75; }
+}
+
+.card-info {
+    width: 100%;
+    max-width: 480px;
+    flex: 0 0 auto;
+    background-color: #FFF6E5;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 3px 5px 4px 0px rgba(239, 106, 133, 0.5);
+    font-family: "Nunito", sans-serif;
+
+    strong {
+        display: block;
+        color: #860F37;
+        font-family: "Nunito-Medium", sans-serif;
+        font-size: 16px;
+        margin-bottom: 15px;
+        line-height: 1.4;
+    }
+
+    p {
+        color: rgba(134, 15, 55, 0.68);
+        font-size: 14px;
+        line-height: 1.6;
+        text-align: justify;
+    }
+}
+
+/* =========================================
+   8. INICIATIVAS PARCEIRAS (PROJETOS)
+   ========================================= */
+
+.outros-projetos {
+    max-width: 1498px;
+    width: calc(100% - 40px); 
+    margin: 0 auto;
+    height: 766px;
+    background-color: #FFC6C5;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 80px;
+    padding-left: 80px;
+    margin-bottom: 30px;
+}
+
+.textos-5 {
+    .titulo-5 {
+        font-size: 13px;
+        color: #EF6A85;
+    }
+
+    h1 {
+        font-family: "PlayfairDisplay", sans-serif;
+        font-weight: 100;
+        font-size: 40px;
+        line-height: 1.0; 
+        margin-bottom: 80px;
+        margin-top: 30px;
+
+        span {
+            font-family: "Italianno", sans-serif;
+            color: #EF6A85;
+            font-size: 65px;
+            line-height: 1.0; 
+        }
+    }
+
+    p {
+        color: rgba(0, 0, 0, 0.59);
+    }
+}
+
+.conteiner-projetos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    cursor: pointer;
+}
+
+/* Efeito hover unificado para todos os projetos */
+.card-link:hover .projeto-1,
+.card-link:hover .projeto-2,
+.card-link:hover .projeto-3 {
+    transform: translateY(-7px);
+    transition: transform 0.5s ease;
+}
+
+/* Estrutura base compartilhada pelos cards */
+.projeto-1, .projeto-2, .projeto-3 {
+    display: flex;
+    flex-direction: column;
+    border-radius: 23px;
+    overflow: hidden; 
+    box-shadow: 0 7px 17px 0 rgba(239, 106, 133, 0.57);
+}
+
+.projeto-1 .gradiente {
+    background: linear-gradient(135deg, #FFC6C5, #EF6A85);
+    padding: 40px 20px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        width: 150px;
+        height: 114px;
+        object-fit: contain;
+    }
+}
+
+.projeto-2 .gradiente {
+    background: linear-gradient(135deg, #FFF6E5, #FFC6C5);
+    padding: 40px 20px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        width: 254px;
+        height: 114px;
+        object-fit: contain;
+    }
+}
+
+.projeto-3 .gradiente {
+    background: linear-gradient(135deg, #E9D7F5, #CBABE1);
+    padding: 40px 20px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        width: 137px;
+        height: 131px;
+    }
+}
+
+.detalhes {
+    background-color: #FFFFFF;
+    padding: 20px; 
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    span {
+        font-family: "Nunito-Medium", sans-serif;
+        font-size: 12px;
+        color: rgba(0, 0, 0, 0.59);
+    }
+
+    strong {
+        font-size: 13px;
+        color: #333;
+    }
+
+    p {
+        font-size: 14px;
+        color: rgba(0, 0, 0, 0.6);
+        margin: 0;
+        text-align: justify;
+        max-width: 310px;
+        max-height: 360px;
+    }
+}
+
+/* =========================================
+   9. ÁREA EXCLUSIVA (AGENDA)
+   ========================================= */
+
+.agenda {
+    max-width: 1498px;
+    width: calc(100% - 40px); 
+    margin: 0 auto;
+    height: 811px;
+    background-color: #FFF6E5;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 80px 150px;
+    border-radius: 14px;
+    box-sizing: border-box;
+}
+
+.textos-6 {
+    p { margin-bottom: 50px; }
+    
+    .titulo-6 {
+        font-size: 13px;
+        color: #EF6A85;
+    }
+
+    h1 {
+        font-family: "PlayfairDisplay", sans-serif;
+        font-weight: 100;
+        font-size: 40px;
+        line-height: 1.0; 
+        margin-bottom: 50px;
+        margin-top: 30px;
+
+        span {
+            font-family: "Italianno", sans-serif;
+            color: #EF6A85;
+            font-size: 65px;
+            line-height: 1.0; 
+        }
+    }
+
+    p {
+        color: rgba(0, 0, 0, 0.59);
+    }
+}
+
+.card-principal {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card-lembrete {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 20px;
+    background-color: #fff;
+    padding: 13px;
+    border-radius: 20px;
+    width: 430px;
+
+    .conteudo {
+        display: flex;
+        flex-direction: column;
+
+        .regular {
+            color: rgba(239, 106, 133, 0.57);
+            font-size: 13px;
+        }
+        .negrito {
+            color: #EF6A85;
+            font-size: 15px;
+        }
+    }
+
+    .box-data {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: #E9D7F5;
+        padding: 10px 16px;
+        border-radius: 15px;
+        
+        .data { font-size: 13px; }    
+    }
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 25px;
+
+    label { color: rgba(0, 0, 0, 0.59); }
+
+    input {
+        border: none;
+        border-radius: 10px;
+        padding: 10px;
+        background: rgba(233, 215, 245, 0.59);
+
+        &:hover { border: 1px solid #EF6A85; }
+    }
+
+    button {
+        border: none;
+        background: #EF6A85;
+        padding: 10px;
+        border-radius: 30px;
+        color: #fff;
+        width: 40%;
+        cursor: pointer;
+
+        &:hover { border: 1px solid #860F37; }
+    }
+
+    span { color: #EF6A85; }
+
+    .cadastrar {
+        text-decoration: none;
+        color: #EF6A85;
+        font-weight: 600;
+
+        &:hover { color: black; }
+    }
+}
+
+/* =========================================
+   10. FAÇA PARTE (CONTRIBUIR)
+   ========================================= */
+
+.contribuir {
+    max-width: 1498px;
+    width: calc(100% - 40px); 
+    margin: 0 auto;
+    height: 593px;
+    background-image: url(/images/fundo-2.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
+    box-sizing: border-box;
+}
+
+.titulo-7 {
+    font-size: 13px;
+    color: #FFC6C5;
+}
+
+.titulo-8 {
+    font-family: "PlayfairDisplay", sans-serif;
+    font-weight: 100;
+    font-size: 40px;
+    line-height: 1.0; 
+    margin-bottom: 10px;
+    margin-top: 30px;
+    color: #FFF6E5;
+
+    span {
+        font-family: "Italianno", sans-serif;
+        color: #FFC6C5;
+        font-size: 65px;
+        line-height: 1.0; 
+    }
+}
+
+.paragrafo {
+    color: #FFF6E5;
+    text-align: center;
+}
+
+.botoes {
+    display: flex;
+    margin-top: 30px;
+    gap: 20px;
+    
+    .bt-contribuir {
+        padding: 16px 30px;
+        border: 1px solid #FFC6C5;
+        border-radius: 30px;
+        text-decoration: none;
+        color: #FFC6C5;
+
+        &.active, &:hover {
+            background-color: #FFC6C5;
+            color: #8C3B52;
+        }
+    }
+}
+
+/* =========================================
+   11. FOOTER
+   ========================================= */
+
+footer {
+    background-color: #2D1A22;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    width: calc(100% - 40px); 
+    margin: 0 auto;
+    padding: 22px;
+}
+
+.conteiner-superior {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin-bottom: 22px;
+    font-size: 14px;
+}
+
+/* Coluna 1: Logo e Texto */
+.conteudo-1 {
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+    line-height: 2.0;
+
+    .logo {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+
+        img {
+            width: 58px;
+            height: 49px;
+        }
+
+        span {
+            color: #FFF6E5;
+            font-family: "PlayfairDisplay", sans-serif;
+        }
+    }
+
+    p {
+        color: rgba(255, 198, 197, 0.66);
+        margin-bottom: 15px;
+    }
+       
+    .endereco, .email {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+
+        img { width: 24px; }
+    }
+}
+
+/* Colunas 2, 3 e 4: Links */
+.conteudo-2, .conteudo-3, .conteudo-4 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: justify;
+    line-height: 2.0;
+
+    span {
+        color: #FFF6E5;
+    }
+
+    a {
+        text-decoration: none;
+        color: #FFC6C5;
+    }
+}
+
+/* Coluna 5: Redes */
+.conteudo-5 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    text-align: justify;
+
+    span {
+        color: #FFF6E5;
+        margin-bottom: 17px;
+    }
+
+    img {
+        width: 24px;
+        margin-bottom: 17px;
+    }
+    
+    .icones-redes {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+/* Linha inferior */
+.conteiner-inferior {
+    display: flex;
+    flex-direction: column;
+
+    span {
+        text-align: center;
+        margin-top: 15px;
+        color: #FFC6C5;
+    }
+    
+    hr {
+        height: 1px; 
+        background-color: #FFC6C5; 
+        opacity: 0.5;
+        border: none;   
+    }
+}
