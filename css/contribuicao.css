@@ -38,7 +38,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
 }
@@ -47,50 +48,97 @@ body {
   font-family: "Nunito", sans-serif;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
 }
-
-
 
 /* =========================================
    2. TEXTOS
    ========================================= */
-   .content{
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 
-    span{
-        font-size: 13px;
-        color: #EF6A85;
+  span {
+    font-size: 13px;
+    color: #ef6a85;
+  }
+
+  h1 {
+    font-family: "PlayfairDisplay", sans-serif;
+    font-weight: 100;
+    font-size: 40px;
+
+    span {
+      font-family: "Italianno", sans-serif;
+      color: #ef6a85;
+      font-size: 65px;
     }
+  }
 
-    h1{
-        font-family: "PlayfairDisplay", sans-serif;
-        font-weight: 100;
-        font-size: 40px;
+  p {
+    color: rgba(0, 0, 0, 0.59);
+    text-align: justify;
+    max-width: 399px;
+  }
+}
 
-        span{
-            font-family: "Italianno", sans-serif;
-            color: #EF6A85;
-            font-size: 65px;
-        }
-    }
-
-    p{
-        color: rgba(0, 0, 0, 0.59);
-        text-align: justify;
-        max-width: 399px;
-    }
-   }
-
-
-
-   /* =========================================
-   2. FORMULÁRIO
+/* =========================================
+   3. FORMULÁRIO
    ========================================= */
 
-   form{
-    display: flex;
-    flex-direction: column;
-   }
+form {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    color: rgba(0, 0, 0, 0.59);
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+}
+
+input {
+  border: none;
+  border-radius: 7px;
+  background: #fff6e5;
+  padding: 12px 15px;
+  text-align: left;
+  min-width: 400px;
+
+  &:hover {
+    border: 1px solid #ef6a85;
+  }
+  margin-bottom: 10px;
+}
+
+textarea {
+  border: none;
+  border-radius: 7px;
+  padding: 12px 15px;
+  text-align: left;
+  background: #fff6e5;
+  min-height: 42px;
+  resize: none;
+
+  &:hover {
+    border: 1px solid #ef6a85;
+  }
+}
+
+button {
+  border: none;
+  background: #ef6a85;
+  padding: 12px 88px;
+  margin-top: 40px;
+  border-radius: 7px;
+  color: #fff;
+  
+  cursor: pointer;
+
+  &.active,
+  &:hover {
+    background-color: #ffdbc5;
+    color: #8c3b52;
+  }
+}
