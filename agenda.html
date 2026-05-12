@@ -36,6 +36,7 @@
         </a>
       </aside>
 
+      <!--CONTEUDO PRINCIPAL-->
       <main class="conteudo-principal">
         <!-- Cabeçalho de boas-vindas -->
         <div class="conteudo-superior">
@@ -58,15 +59,20 @@
         </div>
       </main>
 
+
+      <!--CALENDÁRIO-->
       <aside class="sidebar-dir">
         <h3>Novo Lembrete</h3>
 
         <div class="calendario">
           <!-- Header com navegação -->
           <div class="calendario-header">
-            <button class="btn-navegacao" id="btn-anterior">&lt;</button>
+            <button class="btn-navegacao" id="btn-anterior">&lt;
+            </button>
+
             <h3 id="mes-ano">Abril 2026</h3>
-            <button class="btn-navegacao" id="btn-proximo">&gt;</button>
+            <button class="btn-navegacao" id="btn-proximo">&gt;
+            </button>
           </div>
 
           <!-- Dias da semana -->
@@ -139,5 +145,11 @@
         </form>
       </aside>
     </div>
+
+    <!-- 1. Calendário (lógica independente) -->
+<script src="./js/calendario.js"></script>
+
+<!-- 2. Interações Gerais (máscaras, lembretes, menu) -->
+<script src="./js/interacoes.js"></script>
   </body>
 </html>

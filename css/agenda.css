@@ -186,3 +186,123 @@ body{
     transition: color 0.3s;
   }
 }
+
+
+/* =========================================
+   4. MENU LEMBRETE
+   ========================================= */
+
+   .calendario {
+  max-width: 320px;
+  padding: 24px;
+  font-family: "Nunito", sans-serif;
+  background: #fff;
+  border-radius: 16px;
+}
+
+/* Header */
+.calendario-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.calendario-header h3 {
+  font-family: "PlayfairDisplay", serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #2d1a22;
+}
+
+.btn-navegacao {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #EF6A85;
+  border-radius: 50%;
+  background: transparent;
+  color: #EF6A85;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.btn-navegacao:hover {
+  background-color: #EF6A85;
+  color: #fff;
+}
+
+/* Dias da semana */
+.dias-semana {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.dias-semana span {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: #EF6A85;
+  text-transform: uppercase;
+}
+
+/* Dias do mês */
+.dias-mes {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+
+.dias-mes .dia {
+  aspect-ratio: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #2d1a22;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.dias-mes .dia:hover:not(.outro-mes):not(.selecionado) {
+  background-color: #FFF6E5;
+}
+
+/* Dias de outros meses */
+.dias-mes .outro-mes {
+  color: #ccc;
+  cursor: default;
+}
+
+/* Dia selecionado */
+.dias-mes .selecionado {
+  background-color: #EF6A85;
+  color: #fff;
+  border-radius: 8px;
+}
+
+.dias-mes .selecionado .ponto {
+  width: 4px;
+  height: 4px;
+  background-color: #fff;
+  border-radius: 50%;
+  margin-top: 2px;
+}
+
+/* Linha separadora inferior */
+.calendario::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background-color: rgba(239, 106, 133, 0.3);
+  margin-top: 20px;
+}
+
