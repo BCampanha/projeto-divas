@@ -9,26 +9,31 @@
   <body>
     <div class="dashboard-grid">
       <aside class="sidebar-esq">
-        <div class="logo">
-          <img src="./images/logo.png" alt="" />
-          <span>Projeto Divas</span>
+        <div class="sidebar-topo">
+          <div class="logo">
+            <img src="./images/logo.png" alt="Projeto Divas" />
+            <span>Projeto Divas</span>
+          </div>
         </div>
 
-        <div class="bt-navegacao">
-          <img src="./images/icone-7.png" alt="" />
-          <a href="./agenda.html">Início</a>
-        </div>
+        <nav class="menu-navegacao">
+          <a href="./agenda.html" class="bt-navegacao">
+            <img src="./images/icone-12.png" alt="" />
+            <span>Início</span>
+          </a>
 
-        <div class="bt-navegacao">
-          <img src="./images/icone-8.png" alt="" />
-          <a href="">Sair</a>
-        </div>
+          <a href=" " class="bt-navegacao">
+            <img src="./images/icone-8.png" alt="" />
+            <span>Sair</span>
+          </a>
+        </nav>
 
-        <div class="pefil">
-          <img src="./images/icone-9.png" alt="" />
-          <a href="">NOME DA PACIENTE</a>
-          <!--ESPERANDO BACKEND-->
-        </div>
+        <a href="#" class="perfil">
+          <div class="avatar">
+            <img src="./images/icone-9.png" alt="Avatar" />
+          </div>
+          <span class="nome-paciente">NOME DA PACIENTE</span>
+        </a>
       </aside>
 
       <main class="conteudo-principal">
@@ -40,16 +45,17 @@
         </div>
 
         <!-- CONTAINER DA TIMELINE (Onde os cards vão aparecer) -->
-  <div class="timeline" id="timeline-lembretes">
-    
-    <!-- MENSAGEM CASO ESTEJA VAZIO -->
-    <div class="mensagem-vazia">
-      <p>Nenhum lembrete para hoje. Use o formulário ao lado para agendar! 💊</p>
-    </div>
+        <div class="timeline" id="timeline-lembretes">
+          <!-- MENSAGEM CASO ESTEJA VAZIO -->
+          <div class="mensagem-vazia">
+            <p>
+              Nenhum lembrete para hoje. Use o formulário ao lado para agendar!
+              💊
+            </p>
+          </div>
 
-    <!--JS vai injetar os cards aqui dentro -->
-
-  </div>
+          <!--JS vai injetar os cards aqui dentro -->
+        </div>
       </main>
 
       <aside class="sidebar-dir">
@@ -80,28 +86,56 @@
 
         <hr />
 
-        <form id="form-lembrete"class="form-novo-lembrete">
-            <label>DATA</label>
-            <input type="text" id="data-input" placeholder="DD/MM/AAAA" readonly required>
+        <form id="form-lembrete" class="form-novo-lembrete">
+          <label>DATA</label>
+          <input
+            type="text"
+            id="data-input"
+            placeholder="DD/MM/AAAA"
+            readonly
+            required
+          />
 
-            <label>HORÁRIO</label>
-            <input type="text" id="horario-input" placeholder="--:--" maxlength="5" required>
+          <label>HORÁRIO</label>
+          <input
+            type="text"
+            id="horario-input"
+            placeholder="--:--"
+            maxlength="5"
+            required
+          />
 
-            <label>ETIQUETA</label>
-            <div class="etiquetas-container">
-                <button type="button" class="etiqueta-btn" data-tag="medicacao">Medicação</button>
-                <button type="button" class="etiqueta-btn" data-tag="consulta">Consulta</button>
-                <button type="button" class="etiqueta-btn" data-tag="exame">Exame</button>
-            </div>
+          <label>ETIQUETA</label>
+          <div class="etiquetas-container">
+            <button type="button" class="etiqueta-btn" data-tag="medicacao">
+              Medicação
+            </button>
+            <button type="button" class="etiqueta-btn" data-tag="consulta">
+              Consulta
+            </button>
+            <button type="button" class="etiqueta-btn" data-tag="exame">
+              Exame
+            </button>
+          </div>
 
-            <label>TÍTULO</label>
-            <input type="text" id="titulo-input" placeholder="Ex: Quimioterapia" required>
+          <label>TÍTULO</label>
+          <input
+            type="text"
+            id="titulo-input"
+            placeholder="Ex: Quimioterapia"
+            required
+          />
 
-            <label>DESCRIÇÃO</label>
-            <textarea id="descricao-input" placeholder="Informações adicionais, local, o que levar..." rows="3" required>
-            </textarea>
+          <label>DESCRIÇÃO</label>
+          <textarea
+            id="descricao-input"
+            placeholder="Informações adicionais, local, o que levar..."
+            rows="3"
+            required
+          >
+          </textarea>
 
-            <button type="submit" class="btn-salvar">Salvar Lembrete</button>
+          <button type="submit" class="btn-salvar">Salvar Lembrete</button>
         </form>
       </aside>
     </div>
