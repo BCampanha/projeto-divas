@@ -123,3 +123,28 @@ const AuthMock = {
     return usuario && (usuario.tipo === 'admin' || usuario.email === this.adminCredenciais.email);
   }
 };
+
+// ============================================
+// FUNÇÕES DE REDIRECIONAMENTO
+// ============================================
+
+// Redireciona baseado no tipo de usuário
+function redirecionarPorTipo(usuario) {
+  if (usuario.tipo === 'admin' || usuario.email === AuthMock.adminCredenciais.email) {
+    window.location.href = './admin.html'; // Página do admin
+  } else {
+    window.location.href = './agenda.html'; // Página da agenda
+  }
+}
+
+// Protege páginas (redireciona se não estiver logado)
+function protegerPagina() {
+  if (!AuthMock.estaLogado()) {
+    window.location.href = './index.html';
+  }
+}
+
+// Exporta para uso global
+window.AuthMock = AuthMock;
+window.protegerPagina = protegerPagina;
+window.redirecionarPorTipo = redirecionarPorTipo;
