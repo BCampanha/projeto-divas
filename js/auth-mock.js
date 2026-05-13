@@ -93,4 +93,33 @@ const AuthMock = {
     localStorage.removeItem('usuarioLogadoProjetoDivas');
     window.location.href = './index.html';
   },
-}
+
+  // ============================================
+  // SESSÃO DO USUÁRIO
+  // ============================================
+
+  // Salva usuário logado
+  setUsuarioLogado(usuario) {
+    // Remove senha antes de salvar na sessão
+    const usuarioSemSenha = { ...usuario };
+    delete usuarioSemSenha.senha;
+    localStorage.setItem('usuarioLogadoProjetoDivas', JSON.stringify(usuarioSemSenha));
+  },
+
+  // Pega usuário logado
+  getUsuarioLogado() {
+    const dados = localStorage.getItem('usuarioLogadoProjetoDivas');
+    return dados ? JSON.parse(dados) : null;
+  },
+
+  // Verifica se está logado
+  estaLogado() {
+    return this.getUsuarioLogado() !== null;
+  },
+
+  // Verifica se é admin
+  isAdmin() {
+    const usuario = this.getUsuarioLogado();
+    return usuario && (usuario.tipo === 'admin' || usuario.email === this.adminCredenciais.email);
+  }
+};
