@@ -56,11 +56,6 @@ body{
   overflow: hidden; /* Impede que a página inteira role */
 }
 
-.sidebar-dir {
-  background-color: #ffffff;
-  border-left: 1px solid #e5e7eb;
-}
-
 .conteudo-principal {
   background-color: rgba(233, 215, 245, 0.59);
 }
@@ -74,7 +69,7 @@ body{
     border-right: 1px solid #e5e7eb;
     display: flex;
     flex-direction: column;
-    padding: 24px 20px;
+    padding: 24px 12px;
 
     justify-content: space-between;
     height: 100vh; /* Altura total da tela */
@@ -114,10 +109,11 @@ body{
   display: flex;
   align-items: center;
   gap: 12px; /* Espaço entre ícone e texto */
-  padding: 12px 16px;
+  padding: 9px 16px;
   border-radius: 12px;
   text-decoration: none;
   color: rgba(45, 26, 34, 0.82);
+  font-size: 15px;
   transition: all 0.3s ease;
   cursor: pointer;
 
@@ -135,8 +131,8 @@ body{
   }
 
   img {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
   }
 }
 
@@ -144,13 +140,13 @@ body{
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 12px;
+  padding: 9px;
+  width: 205px;
   border-radius: 12px;
   margin-top: auto;
   text-decoration: none; /* Remove sublinhado do link */
   cursor: pointer;
   transition: all 0.3s ease;
-  width: fit-content; /* Evita que ocupe largura total */
 
   &:hover {
     background-color: rgba(239, 106, 133, 0.1);
@@ -161,8 +157,8 @@ body{
   }
 
   .avatar {
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     background-color: #FFC6C5;
     display: flex;
@@ -171,8 +167,8 @@ body{
     flex-shrink: 0;
     
     img {
-      width: 28px;
-      height: 28px;
+      width: 23px;
+      height: 23px;
       border-radius: 50%;
       object-fit: cover;
     }
@@ -180,8 +176,8 @@ body{
 
   .nome-paciente {
     color: rgba(45, 26, 34, 0.82);
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 13px;
+    font-weight: 600;
     text-decoration: none;
     transition: color 0.3s;
   }
@@ -189,40 +185,49 @@ body{
 
 
 /* =========================================
-   4. MENU LEMBRETE
+   4. CALENDÁRIO E FORMULÁRIO
    ========================================= */
 
-   .calendario {
-  max-width: 320px;
-  padding: 24px;
+.titulo {
+  font-family: "PlayfairDisplay";
+  color: #2D1A22;
+  font-weight: normal;
+  font-size: 18px;
+  padding: 16px 16px 0 16px;
+}
+
+.calendario {
+  max-width: 280px;
+  margin-left: 20px;
+  margin-bottom: 5px;
+  padding: 12px 12px 0 12px;
   font-family: "Nunito", sans-serif;
   background: #fff;
   border-radius: 16px;
 }
 
-/* Header */
 .calendario-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 13px;
 }
 
 .calendario-header h3 {
   font-family: "PlayfairDisplay", serif;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 400;
   color: #2d1a22;
 }
 
 .btn-navegacao {
-  width: 40px;
-  height: 40px;
+  width: 26px;
+  height: 26px;
   border: 1px solid #EF6A85;
   border-radius: 50%;
   background: transparent;
   color: #EF6A85;
-  font-size: 18px;
+  font-size: 14px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -235,27 +240,25 @@ body{
   color: #fff;
 }
 
-/* Dias da semana */
 .dias-semana {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 8px;
-  margin-bottom: 16px;
+  gap: 2px;
+  margin-bottom: 8px;
 }
 
 .dias-semana span {
   text-align: center;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 600;
   color: #EF6A85;
   text-transform: uppercase;
 }
 
-/* Dias do mês */
 .dias-mes {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 8px;
+  gap: 2px;
 }
 
 .dias-mes .dia {
@@ -264,10 +267,10 @@ body{
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
+  font-size: 12px;
   color: #2d1a22;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 4px;
   transition: all 0.3s ease;
   position: relative;
 }
@@ -276,33 +279,296 @@ body{
   background-color: #FFF6E5;
 }
 
-/* Dias de outros meses */
 .dias-mes .outro-mes {
   color: #ccc;
   cursor: default;
 }
 
-/* Dia selecionado */
 .dias-mes .selecionado {
   background-color: #EF6A85;
   color: #fff;
-  border-radius: 8px;
+  border-radius: 4px;
 }
 
 .dias-mes .selecionado .ponto {
-  width: 4px;
-  height: 4px;
+  width: 2px;
+  height: 2px;
   background-color: #fff;
   border-radius: 50%;
-  margin-top: 2px;
+  margin-top: 1px;
 }
 
-/* Linha separadora inferior */
-.calendario::after {
-  content: "";
+
+/* =========================================
+   INPUTS DATA E HORA
+   ========================================= */
+
+.campo-data-hora {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.input-wrapper label {
+  font-size: 10px;
+  font-weight: 600;
+  color: #555;
   display: block;
-  height: 1px;
-  background-color: rgba(239, 106, 133, 0.3);
-  margin-top: 20px;
+  margin-bottom: 4px;
 }
 
+.input-wrapper input {
+  width: 100%;
+  height: 36px;
+  padding: 8px 32px 8px 10px;
+  border: 0.5px solid rgba(239, 106, 133, 0.69);
+  border-radius: 10px;
+  background-color: #FFF8F0;
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  color: #333;
+  outline: none;
+  cursor: pointer;
+}
+
+.icone-input {
+  position: absolute;
+  right: 10px;
+  top: calc(50% + 8px); /* Ajuste fino: 50% do input + metade da altura do label */
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+}
+
+/* =========================================
+   FORMULÁRIO COMPACTO
+   ========================================= */
+
+.form-novo-lembrete {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 12px 12px 12px;
+  background: #fff;
+}
+
+.form-novo-lembrete label {
+  font-size: 10px;
+  font-weight: 600;
+  color: #555;
+  margin-top: 4px;
+}
+
+.form-novo-lembrete input,
+.form-novo-lembrete textarea {
+  padding: 8px 10px;
+  border: 0.5px solid rgba(239, 106, 133, 0.69);
+  border-radius: 10px;
+  background: #FFF8F0;
+  font-family: "Nunito", sans-serif;
+  font-size: 12px;
+  outline: none;
+}
+
+.form-novo-lembrete textarea {
+  resize: none;
+  min-height: 50px;
+}
+
+.etiquetas-container {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.etiqueta-btn {
+  padding: 6px 18px;
+  border: 0.5px solid rgba(239, 106, 133, 0.73);
+  border-radius: 14px;
+  background: #FFF8F0;
+  cursor: pointer;
+  font-size: 11px;
+  color: #555;
+  transition: all 0.2s;
+}
+
+.etiqueta-btn.active {
+  background: #EF6A85;
+  color: #fff;
+  border-color: #EF6A85;
+}
+
+.btn-salvar {
+  margin-top: 6px;
+  padding: 10px;
+  background: #EF6A85;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-salvar:hover {
+  background: #d45a75;
+}
+
+
+
+/* =========================================
+   6. CONTAINER PRINCIPAL
+   ========================================= */
+.conteudo-principal {
+  background-color: #F8F5FC; /* Fundo lilás bem clarinho */
+  padding: 40px;
+  height: 100vh;
+  overflow-y: auto;
+  position: relative; /* Importante para a linha do tempo */
+}
+
+.conteudo-superior {
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.conteudo-superior h1 {
+  font-family: "PlayfairDisplay", serif;
+  font-size: 40px;
+  color: #2D1A22;
+  font-weight: 400;
+
+  span{
+    font-family: "Italianno";
+    color: #EF6A85;
+    font-size: 56px;
+  }
+
+  img{
+    width: 34px;
+  }
+}
+
+.conteudo-superior span {
+  font-size: 14px;
+  color: #2D1A22;
+  text-align: right;
+}
+
+/* --- A LINHA DO TEMPO --- */
+.timeline {
+  position: relative;
+  padding-left: 40px; /* Espaço para os ícones e a linha */
+}
+
+/* A linha vertical rosa */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 15px; /* Posição da linha */
+  top: 10px;
+  bottom: 0;
+  width: 2px;
+  background-color: #EF6A85;
+  opacity: 0.3; /* Transparente para não pesar */
+}
+
+/* --- ESTILO DOS CARDS (Lembretes) --- */
+.lembrete-item {
+  display: flex;
+  align-items: flex-start; /* Alinha o ícone no topo do card */
+  margin-bottom: 30px;
+  position: relative;
+  animation: surgir 0.5s ease; /* Animação suave ao criar */
+}
+
+@keyframes surgir {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* O ÍCONE REDONDO NA LINHA */
+.icone-timeline {
+  position: absolute;
+  left: -40px; /* Puxa o ícone para ficar em cima da linha */
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  border: 2px solid #EF6A85;
+  z-index: 2;
+}
+
+/* Cores específicas para os ícones */
+.icone-timeline.medicacao { background-color: #EF6A85; border-color: #EF6A85; color: #fff; }
+.icone-timeline.consulta { background-color: #E9D7F5; border-color: #E9D7F5; color: #860F37; }
+.icone-timeline.exame { background-color: #FFF6E5; border-color: #FFF6E5; color: #860F37; }
+
+/* O CARD BRANCO */
+.card-lembrete {
+  background: #fff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  width: 100%;
+  max-width: 600px;
+  position: relative;
+  border: 1px solid rgba(239, 106, 133, 0.1);
+}
+
+/* Cabeçalho do card (Hora + Etiqueta) */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.card-hora {
+  font-size: 13px;
+  color: #860F37;
+  font-weight: 600;
+}
+
+/* Etiquetas (Pills coloridas) */
+.etiqueta {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.etiqueta.medicacao { background-color: #EF6A85; color: #fff; }
+.etiqueta.consulta { background-color: #E9D7F5; color: #860F37; }
+.etiqueta.exame { background-color: #FFF6E5; color: #860F37; }
+.etiqueta.evento { background-color: #860F37; color: #fff; }
+
+.card-titulo {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2D1A22;
+  margin: 0 0 6px 0;
+}
+
+.card-descricao {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+  margin: 0;
+}

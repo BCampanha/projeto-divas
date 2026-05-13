@@ -126,8 +126,8 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       `;
 
-      // Adiciona na timeline (append = novo embaixo)
-      timeline.appendChild(novoLembrete);
+       // prepend() adiciona NO TOPO, appendChild() adiciona no final
+    timeline.prepend(novoLembrete);
 
       // Reset do formulário e etiquetas
       formulario.reset();
