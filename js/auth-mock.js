@@ -29,4 +29,68 @@ const AuthMock = {
     const dados = localStorage.getItem('usuariosProjetoDivas');
     return dados ? JSON.parse(dados) : [];
   },
+
+   // ============================================
+  // AUTENTICAÇÃO
+  // ============================================
+
+  // Login simulado
+  async login(email, senha) {
+    // Simula delay de rede (500ms)
+    await new Promise(resolve => setTimeout(resolve, 500));
+
+    // Verifica se é admin
+    if (email === this.adminCredenciais.email && senha === this.adminCredenciais.senha) {
+      const adminUser = {
+        id: 'admin',
+        nome: 'Administrador',
+        email: email,
+        tipo: 'admin'
+      };
+      this.setUsuarioLogado(adminUser);
+      return { sucesso: true, usuario: adminUser, tipo: 'admin' };
+    }
+
+    // Busca usuário no "banco"
+    const usuarios = this.getUsuarios();
+    const usuario = usuarios.find(u => u.email === email && u.senha === senha);
+
+    if (usuario) {
+      this.setUsuarioLogado(usuario);
+      return { sucesso: true, usuario: usuario, tipo: 'paciente' };
+    }
+
+    return { sucesso: false, erro: 'Email ou senha inválidos' };
+  },
+
+  // Cadastro simulado
+  async cadastro(nome, email, telefone, senha) {
+    await new Promise(resolve => setTimeout(resolve, 500));
+
+    const usuarios = this.getUsuarios();
+    
+    // Verifica se email já existe
+    if (usuarios.find(u => u.email === email)) {
+      return { sucesso: false, erro: 'Este email já está cadastrado' };
+    }
+
+    const novoUsuario = {
+      nome,
+      email,
+      telefone,
+      senha, // Em produção: NUNCA salve senha assim! Use hash.
+      tipo: 'paciente'
+    };
+
+    this.salvarUsuario(novoUsuario);
+    this.setUsuarioLogado(novoUsuario);
+    
+    return { sucesso: true, usuario: novoUsuario };
+  },
+
+  // Logout
+  logout() {
+    localStorage.removeItem('usuarioLogadoProjetoDivas');
+    window.location.href = './index.html';
+  },
 }
