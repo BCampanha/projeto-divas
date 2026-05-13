@@ -14,23 +14,28 @@
       </div>
 
       <!-- esperando backend -->
-      <form action="#" method="post">
-        <label for="">NOME</label>
-        <input type="text" name="nome" required/>
+      <form action="#" id="form-cadastro" method="post">
+        <label for="cadastro-nome">NOME</label>
+        <input type="text" id="cadastro-nome" name="nome" required/>
 
-        <label for="">EMAIL</label>
-        <input type="email" name="email" required/>
+        <label for="cadastro-email">EMAIL</label>
+        <input type="email" id="cadastro-email" name="email" required/>
 
-        <label for="">TELEFONE</label>
-        <input type="" name="telefone" required/>
+        <label for="cadastro-telefone">TELEFONE</label>
+        <input type="" id="cadastro-telefone" name="telefone" required/>
 
-        <label for="">SENHA</label>
-        <input type="password" name="senha" required/>
+        <label for="cadastro-senha">SENHA</label>
+        <input type="password" id="cadastro-senha" name="senha" required/>
 
         <button type="submit">Cadastrar</button>
       </form>
     </div>
 
     <img src="/images/foto-8.png" alt="" class="passaro">
+
+    <!--Scripts-->
+    <script src="./js/auth-mock.js"></script>
+    <script src="./js/interacoes.js"></script>
+    <script src="./js/cadastro.js"></script>
   </body>
 </html>

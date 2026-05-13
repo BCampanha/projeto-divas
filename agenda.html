@@ -32,7 +32,7 @@
           <div class="avatar">
             <img src="./images/icone-9.png" alt="Avatar" />
           </div>
-          <span class="nome-paciente">Nome Paciente</span>
+          <span class="nome-paciente" id="nome-sidebar">Carregando...</span>
         </a>
       </aside>
 
@@ -41,10 +41,11 @@
         <!-- Cabeçalho de boas-vindas -->
         <div class="conteudo-superior">
           <!--ESPERANDO BACKEND-->
-          <h1>Olá, <span>Nome Paciente</span>
-            <img src="./images/icone-14.png" alt="">  
+          <h1>
+            Olá, <span id="nome-paciente">Carregando...</span>
+            <img src="./images/icone-14.png" alt="" />
           </h1>
-          
+
           <span id="data-atual">DIA, XX DE MÊS <br />ANO</span>
         </div>
 
@@ -62,7 +63,6 @@
         </div>
       </main>
 
-
       <!--CALENDÁRIO-->
       <aside class="sidebar-dir">
         <h3 class="titulo">Novo Lembrete</h3>
@@ -70,12 +70,10 @@
         <div class="calendario">
           <!-- Header com navegação -->
           <div class="calendario-header">
-            <button class="btn-navegacao" id="btn-anterior">&lt;
-            </button>
+            <button class="btn-navegacao" id="btn-anterior">&lt;</button>
 
             <h3 id="mes-ano">Abril 2026</h3>
-            <button class="btn-navegacao" id="btn-proximo">&gt;
-            </button>
+            <button class="btn-navegacao" id="btn-proximo">&gt;</button>
           </div>
 
           <!-- Dias da semana -->
@@ -94,21 +92,40 @@
         </div>
 
         <form id="form-lembrete" class="form-novo-lembrete">
+          <!-- DATA E HORA LADO A LADO -->
+          <div class="campo-data-hora">
+            <div class="input-wrapper">
+              <label>DATA</label>
+              <input
+                type="text"
+                id="data-input"
+                placeholder="DD/MM/AAAA"
+                readonly
+                required
+              />
+              <img
+                src="./images/icone-10.png"
+                alt="Calendário"
+                class="icone-input"
+              />
+            </div>
 
-              <!-- DATA E HORA LADO A LADO -->
-    <div class="campo-data-hora">
-        <div class="input-wrapper">
-            <label>DATA</label>
-            <input type="text" id="data-input" placeholder="DD/MM/AAAA" readonly required />
-            <img src="./images/icone-10.png" alt="Calendário" class="icone-input">
-        </div>
-        
-        <div class="input-wrapper">
-            <label>HORÁRIO</label>
-            <input type="text" id="horario-input" placeholder="--:--" maxlength="5" required />
-            <img src="./images/icone-11.png" alt="Relógio" class="icone-input">
-        </div>
-    </div>
+            <div class="input-wrapper">
+              <label>HORÁRIO</label>
+              <input
+                type="text"
+                id="horario-input"
+                placeholder="--:--"
+                maxlength="5"
+                required
+              />
+              <img
+                src="./images/icone-11.png"
+                alt="Relógio"
+                class="icone-input"
+              />
+            </div>
+          </div>
 
           <label>ETIQUETA</label>
           <div class="etiquetas-container">
@@ -145,10 +162,11 @@
       </aside>
     </div>
 
-        <!-- 1. Calendário (lógica independente) -->
+    <!-- 1. Calendário (lógica independente) -->
+    <script src="./js/auth-mock.js"></script>
     <script src="./js/calendario.js"></script>
-
-        <!-- 2. Interações Gerais (máscaras, lembretes, menu) -->
     <script src="./js/interacoes.js"></script>
+    <script src="./js/agenda.js"></script>
+    <script src="./js/perfil.js"></script>
   </body>
 </html>
