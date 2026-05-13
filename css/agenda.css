@@ -368,7 +368,7 @@ body{
 
 .form-novo-lembrete input,
 .form-novo-lembrete textarea {
-  padding: 8px 10px;
+  padding: 8px 8px;
   border: 0.5px solid rgba(239, 106, 133, 0.69);
   border-radius: 10px;
   background: #FFF8F0;
@@ -380,6 +380,7 @@ body{
 .form-novo-lembrete textarea {
   resize: none;
   min-height: 50px;
+  text-align: left;
 }
 
 .etiquetas-container {
