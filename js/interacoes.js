@@ -13,17 +13,14 @@ document.addEventListener('DOMContentLoaded', () => {
   
   if (dataInput) {
     dataInput.addEventListener('input', function(e) {
-      let valor = e.target.value.replace(/\D/g, ''); // Remove tudo que não é dígito
+      let valor = e.target.value.replace(/\D/g, '');
+      if (valor.length > 8) valor = valor.slice(0, 8);
       
-      if (valor.length > 8) valor = valor.slice(0, 8); // Limita a 8 dígitos
-      
-      // Adiciona as barras automaticamente
       if (valor.length > 2 && valor.length <= 4) {
         valor = valor.slice(0, 2) + '/' + valor.slice(2);
       } else if (valor.length > 4) {
         valor = valor.slice(0, 2) + '/' + valor.slice(2, 4) + '/' + valor.slice(4);
       }
-      
       e.target.value = valor;
     });
   }
@@ -36,21 +33,16 @@ document.addEventListener('DOMContentLoaded', () => {
   if (horarioInput) {
     horarioInput.addEventListener('input', function(e) {
       let valor = e.target.value.replace(/\D/g, '');
-      
       if (valor.length > 4) valor = valor.slice(0, 4);
-      
       if (valor.length > 2) {
         valor = valor.slice(0, 2) + ':' + valor.slice(2);
       }
-      
       e.target.value = valor;
     });
 
-    // Validação ao sair do campo
     horarioInput.addEventListener('blur', function(e) {
       const valor = e.target.value;
       const regexHora = /^([01]\d|2[0-3]):([0-5]\d)$/;
-      
       if (valor && !regexHora.test(valor)) {
         e.target.value = '';
         alert('Por favor, insira um horário válido (ex: 14:30)');
@@ -73,13 +65,12 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ============================================
-  // 4. CRIAÇÃO DE LEMBRETES (TIMELINE)
+  // 4. LEMBRETES - VARIÁVEIS E CONFIG
   // ============================================
   const formulario = document.getElementById('form-lembrete');
   const timeline = document.getElementById('timeline-lembretes');
   const msgVazia = document.querySelector('.mensagem-vazia') || document.getElementById('msg-vazia');
 
-  // Configuração visual das etiquetas
   const configEtiquetas = {
     medicacao: { icone: '💊', classe: 'medicacao', label: 'MEDICAÇÃO' },
     consulta:  { icone: '🩺', classe: 'consulta',  label: 'CONSULTA' },
@@ -87,49 +78,128 @@ document.addEventListener('DOMContentLoaded', () => {
     evento:    { icone: '🤝', classe: 'evento',    label: 'EVENTO ONG' }
   };
 
+  // ============================================
+  // 5. FUNÇÕES DE ARMAZENAMENTO (LOCALSTORAGE)
+  // ============================================
+  
+  function salvarLembretesStorage(lembretes) {
+    try {
+      localStorage.setItem('lembretesProjetoDivas', JSON.stringify(lembretes));
+    } catch (erro) {
+      console.error('❌ Erro ao salvar lembretes:', erro);
+    }
+  }
+
+  function carregarLembretesStorage() {
+    try {
+      const dados = localStorage.getItem('lembretesProjetoDivas');
+      return dados ? JSON.parse(dados) : [];
+    } catch (erro) {
+      console.error('❌ Erro ao carregar lembretes:', erro);
+      return [];
+    }
+  }
+
+  function gerarId() {
+    return Date.now().toString(36) + Math.random().toString(36).substr(2);
+  }
+
+  // ============================================
+  // 6. RENDERIZAÇÃO DOS LEMBRETES
+  // ============================================
+  
+  function criarElementoLembrete(lembrete) {
+    const config = configEtiquetas[lembrete.etiqueta];
+    const elemento = document.createElement('div');
+    elemento.classList.add('lembrete-item');
+    elemento.dataset.id = lembrete.id;
+    
+    elemento.innerHTML = `
+      <div class="icone-timeline ${config.classe}">${config.icone}</div>
+      <div class="card-lembrete">
+        <div class="card-header">
+          <span class="card-hora">${lembrete.horario}</span>
+          <span class="etiqueta ${config.classe}">${config.label}</span>
+        </div>
+        <h3 class="card-titulo">${lembrete.titulo}</h3>
+        <p class="card-descricao">${lembrete.descricao}</p>
+        <small class="card-data">📅 ${lembrete.data}</small>
+        <button class="btn-excluir" onclick="excluirLembrete('${lembrete.id}')">🗑️ Excluir</button>
+      </div>
+    `;
+    return elemento;
+  }
+
+  function carregarLembretes() {
+    if (!timeline) return;
+    
+    const lembretes = carregarLembretesStorage();
+    timeline.innerHTML = '';
+    
+    if (lembretes.length === 0) {
+      if (msgVazia) {
+        msgVazia.style.display = 'block';
+        timeline.appendChild(msgVazia);
+      }
+    } else {
+      if (msgVazia) msgVazia.style.display = 'none';
+      
+      // Ordena por horário (mais recente primeiro)
+      lembretes.sort((a, b) => {
+        const [hA, mA] = a.horario.split(':').map(Number);
+        const [hB, mB] = b.horario.split(':').map(Number);
+        return (hB * 60 + mB) - (hA * 60 + mA);
+      });
+      
+      lembretes.forEach(lembrete => {
+        timeline.appendChild(criarElementoLembrete(lembrete));
+      });
+    }
+  }
+
+  // Função global para excluir (usada no onclick do HTML)
+  window.excluirLembrete = function(id) {
+    if (confirm('Deseja realmente excluir este lembrete?')) {
+      let lembretes = carregarLembretesStorage();
+      lembretes = lembretes.filter(l => l.id !== id);
+      salvarLembretesStorage(lembretes);
+      carregarLembretes();
+    }
+  };
+
+  // ============================================
+  // 7. SUBMISSÃO DO FORMULÁRIO
+  // ============================================
+  
   if (formulario && timeline) {
     formulario.addEventListener('submit', (e) => {
       e.preventDefault();
 
-      // Validação da etiqueta
       if (!etiquetaSelecionada) {
         alert('Por favor, selecione uma etiqueta (Medicação, Consulta, etc).');
         return;
       }
 
-      // Captura dos dados
       const data = document.getElementById('data-input')?.value || '';
       const horario = document.getElementById('horario-input')?.value || '';
       const titulo = document.getElementById('titulo-input')?.value || '';
       const descricao = document.getElementById('descricao-input')?.value || '';
 
-      // Esconde mensagem de "vazio" se existir
-      if (msgVazia) msgVazia.style.display = 'none';
+      const novoLembrete = {
+        id: gerarId(),
+        data,
+        horario,
+        titulo,
+        descricao,
+        etiqueta: etiquetaSelecionada,
+        criadoEm: new Date().toISOString()
+      };
 
-      // Configuração da etiqueta escolhida
-      const config = configEtiquetas[etiquetaSelecionada];
-      
-      // Cria o elemento do card
-      const novoLembrete = document.createElement('div');
-      novoLembrete.classList.add('lembrete-item');
-      
-      novoLembrete.innerHTML = `
-        <div class="icone-timeline ${config.classe}">${config.icone}</div>
-        <div class="card-lembrete">
-          <div class="card-header">
-            <span class="card-hora">${horario}</span>
-            <span class="etiqueta ${config.classe}">${config.label}</span>
-          </div>
-          <h3 class="card-titulo">${titulo}</h3>
-          <p class="card-descricao">${descricao}</p>
-          <small class="card-data">📅 ${data}</small>
-        </div>
-      `;
+      let lembretes = carregarLembretesStorage();
+      lembretes.push(novoLembrete);
+      salvarLembretesStorage(lembretes);
+      carregarLembretes();
 
-       // prepend() adiciona NO TOPO, appendChild() adiciona no final
-    timeline.prepend(novoLembrete);
-
-      // Reset do formulário e etiquetas
       formulario.reset();
       botoesEtiqueta.forEach(b => b.classList.remove('active'));
       etiquetaSelecionada = null;
@@ -137,21 +207,27 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ============================================
-  // 5. NAVEGAÇÃO DO MENU LATERAL
+  // 8. NAVEGAÇÃO DO MENU LATERAL
   // ============================================
+  
   const botoesNavegacao = document.querySelectorAll('.bt-navegacao');
-
   botoesNavegacao.forEach(botao => {
     botao.addEventListener('click', function(e) {
-      // Se for um link de navegação real (#), previne o scroll instantâneo
-      if(this.getAttribute('href') === '#') {
+      // Previne apenas se for âncora vazia (#)
+      if (this.getAttribute('href') === '#') {
         e.preventDefault();
       }
-      
-      // Troca a classe active
+      // Atualiza classe active
       botoesNavegacao.forEach(b => b.classList.remove('active'));
       this.classList.add('active');
     });
   });
 
-}); // Fim do DOMContentLoaded
+  // ============================================
+  // 9. CARREGAMENTO INICIAL DOS LEMBRETES
+  // ============================================
+  
+  // ✅ Esta é a ÚNICA chamada necessária
+  carregarLembretes();
+
+}); // ✅ Fim do DOMContentLoaded (apenas UM)
