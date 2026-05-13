@@ -231,3 +231,29 @@ document.addEventListener('DOMContentLoaded', () => {
   carregarLembretes();
 
 }); // ✅ Fim do DOMContentLoaded (apenas UM)
+
+
+// ============================================
+// 10. FUNÇÃO DE LOGOUT/SAIR
+// ============================================
+
+function fazerLogout(event) {
+  event.preventDefault(); // Previne o comportamento padrão do link
+  
+  if (confirm('Deseja realmente sair do sistema?')) {
+    // Opcional: Limpar dados da sessão
+    // localStorage.removeItem('lembretesProjetoDivas');
+    // sessionStorage.clear();
+    
+    // Tenta fechar a janela
+    window.close();
+    
+    // Se não conseguir fechar (limitação do navegador), redireciona
+    setTimeout(() => {
+      // Redireciona para página de login ou home
+      window.location.href = './index.html'; // ou 'login.html'
+      // Ou abre uma página em branco:
+      // window.location.href = 'about:blank';
+    }, 500);
+  }
+}
