@@ -957,6 +957,12 @@ footer {
         margin-bottom: 15px;
 
         img { width: 24px; }
+
+        a{
+            text-decoration: none;
+             color: #FFC6C5;
+             margin-left: 5px;
+        }
     }
 }
 
