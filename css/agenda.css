@@ -38,19 +38,55 @@
   box-sizing: border-box;
 }
 
-body{
-    font-family: "Nunito", sans-serif;
+/* Chrome, Edge e Safari */
+::-webkit-scrollbar {
+  width: 6px; /* Barra bem fininha */
+}
+
+/*Esconde o fundo/trilho da barra */
+::-webkit-scrollbar-track {
+  background: transparent !important;
+  border: none !important;
+}
+
+/*Estiliza a barrinha (Thumb) */
+::-webkit-scrollbar-thumb {
+  background-color: rgb(204, 204, 204); 
+  border-radius: 20px;      
+  border: 3px solid transparent; 
+  background-clip: content-box; 
+}
+
+/*Opcional: Efeito ao passar o mouse */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #ef6a85;
+}
+
+/*Esconde as setinhas nas pontas (caso apareçam) */
+::-webkit-scrollbar-button {
+  display: none;
+  height: 0;
+  width: 0;
+}
+
+/*Define uma largura fixa para a barra não ficar fina demais */
+::-webkit-scrollbar {
+  width: 10px; /* Espaço total da área da barra */
+}
+
+body {
+  font-family: "Nunito", sans-serif;
 }
 
 /* =========================================
    2. AJUSTE DASHBOARD
    ========================================= */
 
-   .dashboard-grid {
+.dashboard-grid {
   display: grid;
   /* Esquerda fixa | Centro flexível | Direita fixa */
   grid-template-columns: 240px 1fr 320px;
-  
+
   height: 100dvh; /* 100% da altura da viewport (melhor que 100vh no mobile) */
   width: 100%;
   overflow: hidden; /* Impede que a página inteira role */
@@ -64,39 +100,38 @@ body{
    3. MENU LATERAL
    ========================================= */
 
-   .sidebar-esq {
-    background-color: #ffffff;
-    border-right: 1px solid #e5e7eb;
-    display: flex;
-    flex-direction: column;
-    padding: 24px 12px;
+.sidebar-esq {
+  background-color: #ffffff;
+  border-right: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 12px;
 
-    justify-content: space-between;
-    height: 100vh; /* Altura total da tela */
-    position: sticky;
-    top: 0;
+  justify-content: space-between;
+  height: 100vh; /* Altura total da tela */
+  position: sticky;
+  top: 0;
 
-    .sidebar-topo {
+  .sidebar-topo {
     margin-bottom: 40px;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    img {
+      width: 58px;
+      height: 49px;
     }
 
-    .logo {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-
-        img {
-            width: 58px;
-            height: 49px;
-        }
-
-        span {
-            color: rgba(45, 26, 34, 0.82);
-            font-family: "PlayfairDisplay", sans-serif;
-        }
+    span {
+      color: rgba(45, 26, 34, 0.82);
+      font-family: "PlayfairDisplay", sans-serif;
     }
+  }
 }
-
 
 .menu-navegacao {
   display: flex;
@@ -117,17 +152,16 @@ body{
   transition: all 0.3s ease;
   cursor: pointer;
 
-   &:hover {
+  &:hover {
     background-color: rgba(239, 106, 133, 0.1);
-    span{
-        color: #EF6A85;
+    span {
+      color: #ef6a85;
     }
   }
 
   &.active {
-    background-color: #EF6A85; /* Rosa claro */
-    color: #EF6A85;
-    font-weight: 600;
+    background-color: #ef6a85; /* Rosa claro */
+    color: #fff6e5;
   }
 
   img {
@@ -150,9 +184,9 @@ body{
 
   &:hover {
     background-color: rgba(239, 106, 133, 0.1);
-    
+
     .nome-paciente {
-      color: #EF6A85; /* Muda cor do texto no hover */
+      color: #ef6a85; /* Muda cor do texto no hover */
     }
   }
 
@@ -160,12 +194,12 @@ body{
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    background-color: #FFC6C5;
+    background-color: #ffc6c5;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    
+
     img {
       width: 23px;
       height: 23px;
@@ -183,14 +217,13 @@ body{
   }
 }
 
-
 /* =========================================
    4. CALENDÁRIO E FORMULÁRIO
    ========================================= */
 
 .titulo {
   font-family: "PlayfairDisplay";
-  color: #2D1A22;
+  color: #2d1a22;
   font-weight: normal;
   font-size: 18px;
   padding: 16px 16px 0 16px;
@@ -223,10 +256,10 @@ body{
 .btn-navegacao {
   width: 26px;
   height: 26px;
-  border: 1px solid #EF6A85;
+  border: 1px solid #ef6a85;
   border-radius: 50%;
   background: transparent;
-  color: #EF6A85;
+  color: #ef6a85;
   font-size: 14px;
   cursor: pointer;
   display: flex;
@@ -236,7 +269,7 @@ body{
 }
 
 .btn-navegacao:hover {
-  background-color: #EF6A85;
+  background-color: #ef6a85;
   color: #fff;
 }
 
@@ -251,7 +284,7 @@ body{
   text-align: center;
   font-size: 10px;
   font-weight: 600;
-  color: #EF6A85;
+  color: #ef6a85;
   text-transform: uppercase;
 }
 
@@ -276,7 +309,7 @@ body{
 }
 
 .dias-mes .dia:hover:not(.outro-mes):not(.selecionado) {
-  background-color: #FFF6E5;
+  background-color: #fff6e5;
 }
 
 .dias-mes .outro-mes {
@@ -285,7 +318,7 @@ body{
 }
 
 .dias-mes .selecionado {
-  background-color: #EF6A85;
+  background-color: #ef6a85;
   color: #fff;
   border-radius: 4px;
 }
@@ -297,7 +330,6 @@ body{
   border-radius: 50%;
   margin-top: 1px;
 }
-
 
 /* =========================================
    INPUTS DATA E HORA
@@ -329,7 +361,7 @@ body{
   padding: 8px 32px 8px 10px;
   border: 0.5px solid rgba(239, 106, 133, 0.69);
   border-radius: 10px;
-  background-color: #FFF8F0;
+  background-color: #fff8f0;
   font-family: "Nunito", sans-serif;
   font-size: 12px;
   color: #333;
@@ -340,7 +372,9 @@ body{
 .icone-input {
   position: absolute;
   right: 10px;
-  top: calc(50% + 8px); /* Ajuste fino: 50% do input + metade da altura do label */
+  top: calc(
+    50% + 8px
+  ); /* Ajuste fino: 50% do input + metade da altura do label */
   transform: translateY(-50%);
   width: 16px;
   height: 16px;
@@ -371,7 +405,7 @@ body{
   padding: 8px 8px;
   border: 0.5px solid rgba(239, 106, 133, 0.69);
   border-radius: 10px;
-  background: #FFF8F0;
+  background: #fff8f0;
   font-family: "Nunito", sans-serif;
   font-size: 12px;
   outline: none;
@@ -393,7 +427,7 @@ body{
   padding: 6px 18px;
   border: 0.5px solid rgba(239, 106, 133, 0.73);
   border-radius: 14px;
-  background: #FFF8F0;
+  background: #fff8f0;
   cursor: pointer;
   font-size: 11px;
   color: #555;
@@ -401,15 +435,15 @@ body{
 }
 
 .etiqueta-btn.active {
-  background: #EF6A85;
+  background: #ef6a85;
   color: #fff;
-  border-color: #EF6A85;
+  border-color: #ef6a85;
 }
 
 .btn-salvar {
   margin-top: 6px;
   padding: 10px;
-  background: #EF6A85;
+  background: #ef6a85;
   color: #fff;
   border: none;
   border-radius: 10px;
@@ -423,13 +457,11 @@ body{
   background: #d45a75;
 }
 
-
-
 /* =========================================
    6. CONTAINER PRINCIPAL
    ========================================= */
 .conteudo-principal {
-  background-color: #F8F5FC; /* Fundo lilás bem clarinho */
+  background-color: #f8f5fc; /* Fundo lilás bem clarinho */
   padding: 40px;
   height: 100vh;
   overflow-y: auto;
@@ -446,23 +478,23 @@ body{
 .conteudo-superior h1 {
   font-family: "PlayfairDisplay", serif;
   font-size: 40px;
-  color: #2D1A22;
+  color: #2d1a22;
   font-weight: 400;
 
-  span{
+  span {
     font-family: "Italianno";
-    color: #EF6A85;
+    color: #ef6a85;
     font-size: 56px;
   }
 
-  img{
+  img {
     width: 34px;
   }
 }
 
 .conteudo-superior span {
   font-size: 14px;
-  color: #2D1A22;
+  color: #2d1a22;
   text-align: right;
 }
 
@@ -474,13 +506,13 @@ body{
 
 /* A linha vertical rosa */
 .timeline::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 15px; /* Posição da linha */
   top: 10px;
   bottom: 0;
   width: 2px;
-  background-color: #EF6A85;
+  background-color: #ef6a85;
   opacity: 0.3; /* Transparente para não pesar */
 }
 
@@ -494,8 +526,14 @@ body{
 }
 
 @keyframes surgir {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* O ÍCONE REDONDO NA LINHA */
@@ -510,21 +548,46 @@ body{
   align-items: center;
   justify-content: center;
   font-size: 16px;
-  border: 2px solid #EF6A85;
+  border: 2px solid #ef6a85;
   z-index: 2;
 }
 
 /* Cores específicas para os ícones */
-.icone-timeline.medicacao { background-color: #EF6A85; border-color: #EF6A85; color: #fff; }
-.icone-timeline.consulta { background-color: #E9D7F5; border-color: #E9D7F5; color: #860F37; }
-.icone-timeline.exame { background-color: #FFF6E5; border-color: #FFF6E5; color: #860F37; }
+.icone-timeline.medicacao {
+  background-color: #ef6a85;
+  border-color: #ef6a85;
+  color: #fff;
+  img {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.icone-timeline.consulta {
+  background-color: #e9d7f5;
+  border-color: #e9d7f5;
+  color: #860f37;
+  img {
+    width: 18px;
+    height: 18px;
+  }
+}
+.icone-timeline.exame {
+  background-color: #fff6e5;
+  border-color: #fff6e5;
+  color: #860f37;
+  img {
+    width: 18px;
+    height: 18px;
+  }
+}
 
 /* O CARD BRANCO */
 .card-lembrete {
   background: #fff;
   padding: 20px;
   border-radius: 16px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   width: 100%;
   max-width: 600px;
   position: relative;
@@ -541,7 +604,7 @@ body{
 
 .card-hora {
   font-size: 13px;
-  color: #860F37;
+  color: #860f37;
   font-weight: 600;
 }
 
@@ -550,20 +613,32 @@ body{
   padding: 4px 12px;
   border-radius: 20px;
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
-.etiqueta.medicacao { background-color: #EF6A85; color: #fff; }
-.etiqueta.consulta { background-color: #E9D7F5; color: #860F37; }
-.etiqueta.exame { background-color: #FFF6E5; color: #860F37; }
-.etiqueta.evento { background-color: #860F37; color: #fff; }
+.etiqueta.medicacao {
+  background-color: #ef6a85;
+  color: #fff6e5;
+}
+.etiqueta.consulta {
+  background-color: #e9d7f5;
+  color: #860f37;
+}
+.etiqueta.exame {
+  background-color: #fff6e5;
+  color: #ef6a85;
+}
+.etiqueta.evento {
+  background-color: #860f37;
+  color: #fff6e5;
+}
 
 .card-titulo {
   font-size: 16px;
   font-weight: 600;
-  color: #2D1A22;
+  color: #2d1a22;
   margin: 0 0 6px 0;
 }
 
@@ -577,15 +652,43 @@ body{
 .btn-excluir {
   margin-top: 12px;
   padding: 6px 12px;
-  background: #f44336;
-  color: white;
+  background: transparent;
+  color: #860f37;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   font-size: 11px;
+  font-weight: 600;
   transition: background 0.3s;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 6px; /* Espaço entre ícone e texto */
+
+  img {
+    width: 15px;
+    height: 15px;
+    object-fit: contain;
+    display: block; /* Remove espaço extra */
+  }
 }
 
 .btn-excluir:hover {
-  background: #d32f2f;
+  background: #860f37;
+  color: #fff6e5;
+}
+
+.card-data {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px; /* Espaço entre a imagem e a data */
+  color: #666;
+  font-size: 12px;
+
+  img {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+    display: block;
+  }
 }
