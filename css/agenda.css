@@ -152,6 +152,9 @@ body {
   transition: all 0.3s ease;
   cursor: pointer;
 
+   outline: none;
+  border: none;
+
   &:hover {
     background-color: rgba(239, 106, 133, 0.1);
     span {
@@ -162,6 +165,8 @@ body {
   &.active {
     background-color: #ef6a85; /* Rosa claro */
     color: #fff6e5;
+    border: none;
+    outline: none;
   }
 
   img {

@@ -301,3 +301,21 @@ function atualizarDataTopo() {
 
 // Executa assim que a página carrega
 document.addEventListener('DOMContentLoaded', atualizarDataTopo);
+
+
+// ============================================
+// 12. FUNÇÃO PARA ATIVAR BOTÃO DE NAVEGAÇÃO
+// ============================================
+
+function ativarBotao(event, elemento) {
+  // Previne o comportamento padrão do link
+  // event.preventDefault(); // Remova essa linha se quiser navegar para agenda.html
+  
+  // Remove 'active' de todos os botões
+  document.querySelectorAll('.bt-navegacao').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  
+  // Adiciona 'active' no botão clicado
+  elemento.classList.add('active');
+}
