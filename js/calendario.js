@@ -1,5 +1,5 @@
 const Calendario = {
-  dataAtual: new Date(2026, 3, 1), // Abril 2026 (mês começa do 0)
+  dataAtual: new Date(), 
   diaSelecionado: null,
   
   meses: [
