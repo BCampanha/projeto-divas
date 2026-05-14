@@ -1,6 +1,5 @@
 // informacao.js
 
-// Mudei os nomes aqui para: botoesInfo e containersInfo
 const botoesInfo = document.querySelectorAll('.botao-opcoes-2');
 const containersInfo = document.querySelectorAll('.cards-container');
 

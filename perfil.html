@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projeto Divas</title>
+     <link rel="icon" type="image/png" href="./images/logo.png">
     <link rel="stylesheet" href="./css/perfil.css">
 </head>
 <body>
@@ -33,7 +34,7 @@
             <img src="./images/icone-9.png" alt="Avatar" />
           </div>
           <!--ESPERANDO BACKEND-->
-          <span class="nome-paciente">Nome Paciente</span>
+          <span class="nome-paciente" id="nome-sidebar">Carregando...</span>
         </a>
         </aside>
 
@@ -49,9 +50,15 @@
 
                 <div class="informacao">
                     <!--ESPERANDO BACKEND-->
-                    <span>Nome Paciente</span>
-                    <span>email paciente</span>
-                    <span>senha paciente</span>
+                    <span id="perfil-nome">Carregando...</span>
+                    <span id="perfil-email">Carregando...</span>
+
+                    <div>
+                     <span id="perfil-senha">••••••••</span>
+                    <button type="button" onclick="toggleSenha()" class="btn-ver-senha">
+                    <img id="img-senha" src="./images/icone-21.png" alt="Ver senha" width="18" height="18">
+                    </button>
+                    </div>
                 </div>
             </div>
         </main>
@@ -59,6 +66,8 @@
 
 
 
+    <script src="./js/auth-mock.js"></script>
     <script src="./js/interacoes.js"></script>
+    <script src="./js/perfil.js"></script>
 </body>
 </html>

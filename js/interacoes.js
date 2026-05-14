@@ -301,3 +301,38 @@ function atualizarDataTopo() {
 
 // Executa assim que a página carrega
 document.addEventListener('DOMContentLoaded', atualizarDataTopo);
+
+
+// ============================================
+// 12. FUNÇÃO PARA ATIVAR BOTÃO DE NAVEGAÇÃO
+// ============================================
+
+function ativarBotao(event, elemento) {
+  // Previne o comportamento padrão do link
+  // event.preventDefault(); // Remova essa linha se quiser navegar para agenda.html
+  
+  // Remove 'active' de todos os botões
+  document.querySelectorAll('.bt-navegacao').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  
+  // Adiciona 'active' no botão clicado
+  elemento.classList.add('active');
+}
+
+
+// ============================================
+  // 13. LÓGICA DO BOTÃO DE PERFIL NA SIDEBAR
+  // ============================================
+  const perfilBtn = document.querySelector('.perfil');
+
+  // Verifica se a página atual é a de perfil
+  if (window.location.href.includes('perfil.html') && perfilBtn) {
+    perfilBtn.classList.add('active');
+  }
+
+  // Bônus: Se quiser que o botão "Início" também se acerte sozinho:
+  const btnInicio = document.querySelector('a[href*="agenda.html"]') || document.querySelector('a[href="."]');
+  if (window.location.href.includes('agenda.html') || window.location.href.includes('index.html')) {
+     if(btnInicio) btnInicio.classList.add('active');
+  }
