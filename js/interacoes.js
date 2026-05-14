@@ -319,3 +319,20 @@ function ativarBotao(event, elemento) {
   // Adiciona 'active' no botão clicado
   elemento.classList.add('active');
 }
+
+
+// ============================================
+  // 13. LÓGICA DO BOTÃO DE PERFIL NA SIDEBAR
+  // ============================================
+  const perfilBtn = document.querySelector('.perfil');
+
+  // Verifica se a página atual é a de perfil
+  if (window.location.href.includes('perfil.html') && perfilBtn) {
+    perfilBtn.classList.add('active');
+  }
+
+  // Bônus: Se quiser que o botão "Início" também se acerte sozinho:
+  const btnInicio = document.querySelector('a[href*="agenda.html"]') || document.querySelector('a[href="."]');
+  if (window.location.href.includes('agenda.html') || window.location.href.includes('index.html')) {
+     if(btnInicio) btnInicio.classList.add('active');
+  }
