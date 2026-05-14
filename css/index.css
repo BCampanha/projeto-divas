@@ -343,48 +343,49 @@ nav {
     padding: 80px 80px 60px 80px;
     margin-bottom: 30px;
 }
- 
+
 .textos-3 {
     margin-bottom: 40px;
-
-    .titulo-3 {
-        font-size: 13px;
-        color: #EF6A85;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        display: block;
-        margin-bottom: 30px;
-    }
-     
-    h1 {
-        font-family: "PlayfairDisplay", serif;
-        font-weight: 400;
-        font-size: 40px;
-        line-height: 1.1;
-        margin-bottom: 20px;
-        color: #2d1a22;
-
-        span {
-            font-family: "Italianno", sans-serif;
-            color: #EF6A85;
-            font-size: 65px;
-            line-height: 1.0;
-        }
-    }
-     
-    p {
-        color: rgba(0, 0, 0, 0.55);
-        line-height: 1.7;
-    }
 }
 
+.textos-3 .titulo-3 {
+    font-size: 13px;
+    color: #EF6A85;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 30px;
+}
+
+.textos-3 h1 {
+    font-family: "PlayfairDisplay", serif;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: #2d1a22;
+}
+
+.textos-3 h1 span {
+    font-family: "Italianno", sans-serif;
+    color: #EF6A85;
+    font-size: 65px;
+    line-height: 1.0;
+}
+
+.textos-3 p {
+    color: rgba(0, 0, 0, 0.55);
+    line-height: 1.7;
+}
+
+/* BOTÕES DE FILTRO */
 .atividades .opcoes {
     display: flex;
     align-items: center;
     gap: 12px;
     margin-bottom: 40px;
 }
- 
+
 .botao-opcoes {
     padding: 6px 22px;
     border: 1.5px solid #E9D7F5;
@@ -393,51 +394,89 @@ nav {
     cursor: pointer;
     font-size: 0.85rem;
     font-family: inherit;
+    color: #000;
     transition: all 0.2s ease;
-
-    &.active, &:hover {
-        background-color: #E9D7F5;
-        border-color: #E9D7F5;
-    }
 }
- 
+
+.botao-opcoes.active,
+.botao-opcoes:hover {
+    background-color: #E9D7F5;
+    border-color: #E9D7F5;
+    color: #000;
+}
+
+/* GRID BENTO - 12 COLUNAS */
 .grid-imagens {
     display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    grid-template-rows: auto;
-    gap: 16px;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 16px; /* Espaço entre os cards */
     width: 100%;
-    max-width: 850px;
-    margin: auto;
+    max-width: 1100px;
+    margin: 0 auto;
+    /* align-items: start; É crucial para não esticar os cards menores */
+    align-items: start; 
 }
 
-.card-grande {
-    grid-row: span 2;
-    border-radius: 16px;
+/* Definições de Colunas */
+.col-span-7 { grid-column: span 7; }
+.col-span-6 { grid-column: span 6; }
+.col-span-5 { grid-column: span 5; }
+.col-span-4 { grid-column: span 4; }
+.col-span-3 { grid-column: span 3; }
+
+/* O Card 1 precisa ocupar 2 linhas para os cards 2 e 3 ficarem ao lado */
+.row-span-2 { grid-row: span 2; }
+
+.photo-card {
+    border-radius: 20px;
     overflow: hidden;
-    background-color: #fff;
-    height: 488px;  
+    position: relative;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
- 
-.card-pequeno {
-    border-radius: 16px;
-    overflow: hidden;
-    background-color: #fff;
-    height: 244px;     
+
+.photo-fill {
+    width: 100%;
+    height: 100%;
+    display: block;
 }
- 
-.card-grande img,
-.card-pequeno img {
+
+.photo-fill img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
 }
 
-.card-grande.hide,
-.card-pequeno.hide {
-    display: none;
+/* Overlay */
+.card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(45, 26, 34, 0.85), transparent);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1rem;
+    opacity: 0;
+    transition: opacity 0.3s;
 }
+.photo-card:hover .card-overlay { opacity: 1; }
+
+.overlay-tag {
+    background: rgba(255,255,255,0.2);
+    color: white;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    width: fit-content;
+    margin-bottom: 0.5rem;
+    backdrop-filter: blur(4px);
+}
+.overlay-title { color: white; font-size: 0.9rem; font-weight: 600; line-height: 1.2; }
+.overlay-date { color: rgba(255,255,255,0.8); font-size: 0.75rem; margin-top: 0.2rem; }
+.photo-card.hide { display: none; }
 
 /* =========================================
    7. SAÚDE E INFORMAÇÃO
