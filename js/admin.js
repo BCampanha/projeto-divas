@@ -1,8 +1,8 @@
 // js/admin.js
 document.addEventListener('DOMContentLoaded', () => {
   // Protege a página (só admin acessa)
-   const usuario = AuthMock.getUsuarioLogado();
-     if (usuario) {
+  const usuario = AuthMock.getUsuarioLogado();
+  if (usuario) {
     const nomeSidebar = document.getElementById('nome-sidebar');
     if (nomeSidebar) {
       nomeSidebar.textContent = usuario.nome;
@@ -17,8 +17,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('form-publicar-evento');
   const timeline = document.getElementById('timeline-eventos');
   
+  // ✅ DECLARA A VARIÁVEL DO INPUT DE BUSCA
+  const buscaInput = document.getElementById('busca-eventos');
+  
   // Carregar eventos publicados
   carregarEventos();
+
+  // ✅ FILTRO DE BUSCA
+  if (buscaInput) {
+    buscaInput.addEventListener('input', (e) => {
+      const termoBusca = e.target.value.toLowerCase().trim();
+      filtrarEventos(termoBusca);
+    });
+  }
 
   // Publicar novo evento
   if (form) {
@@ -42,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
         tipo: 'evento-ong'
       };
 
-      // Salva no localStorage (eventos públicos)
       const eventos = JSON.parse(localStorage.getItem('eventosPublicos') || '[]');
       eventos.push(novoEvento);
       localStorage.setItem('eventosPublicos', JSON.stringify(eventos));
@@ -54,34 +64,70 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-function carregarEventos() {
+// ✅ FUNÇÃO DE FILTRAGEM
+function filtrarEventos(termoBusca = '') {
   const timeline = document.getElementById('timeline-eventos');
   if (!timeline) return;
 
-  const eventos = JSON.parse(localStorage.getItem('eventosPublicos') || '[]');
+  let eventos = JSON.parse(localStorage.getItem('eventosPublicos') || '[]');
   
+  // Ordena por data de publicação (mais recente primeiro)
+  eventos.sort((a, b) => new Date(b.publicadoEm) - new Date(a.publicadoEm));
+
+  // Filtra se houver termo de busca
+  if (termoBusca) {
+    eventos = eventos.filter(evento => {
+      const tituloMatch = evento.titulo.toLowerCase().includes(termoBusca);
+      const facilitadoraMatch = evento.facilitadora.toLowerCase().includes(termoBusca);
+      const dataMatch = evento.data.includes(termoBusca);
+      const horarioMatch = evento.horario.includes(termoBusca);
+      
+      return tituloMatch || facilitadoraMatch || dataMatch || horarioMatch;
+    });
+  }
+
   if (eventos.length === 0) {
-    timeline.innerHTML = '<p style="text-align: center; color: #999;">Nenhum evento publicado ainda.</p>';
+    timeline.innerHTML = `<p style="text-align: center; color: #999; padding: 40px;">
+      ${termoBusca ? 'Nenhum evento encontrado para "' + termoBusca + '"' : 'Nenhum evento publicado ainda.'}
+    </p>`;
     return;
   }
 
-  // Ordena por data
-  eventos.sort((a, b) => new Date(b.publicadoEm) - new Date(a.publicadoEm));
+  renderizarEventos(eventos, timeline);
+}
 
-  timeline.innerHTML = eventos.map(evento => `
-    <div class="lembrete-item">
-      <div class="data-lateral">
-        <span class="dia">${evento.data.split('/')[0]}</span>
-        <span class="mes">ABR</span>
-      </div>
-      <div class="card-lembrete">
-        <div class="card-header">
-          <span class="card-hora">${evento.horario}</span>
-          <span class="etiqueta evento">EVENTO ONG</span>
+// ✅ FUNÇÃO DE RENDERIZAÇÃO
+function renderizarEventos(eventos, timeline) {
+  const meses = ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ'];
+
+  timeline.innerHTML = eventos.map(evento => {
+    const dataParts = evento.data.split('/');
+    const dia = dataParts[0];
+    const mes = dataParts[1];
+    const mesNome = meses[parseInt(mes) - 1];
+
+    return `
+      <div class="lembrete-item">
+        <div class="data-lateral">
+          <span class="dia">${dia}</span>
+          <span class="mes">${mesNome}</span>
         </div>
-        <h3 class="card-titulo">${evento.titulo}</h3>
-        <p class="card-descricao">Sessão presencial<br>Facilitadora: ${evento.facilitadora}</p>
+        <div class="card-lembrete">
+          <div class="card-header">
+            <span class="card-hora">${evento.horario}</span>
+            <span class="etiqueta evento">EVENTO ONG</span>
+          </div>
+          <h3 class="card-titulo">${evento.titulo}</h3>
+          <p class="card-descricao">Sessão presencial<br>Facilitadora: ${evento.facilitadora}</p>
+        </div>
       </div>
-    </div>
-  `).join('');
+    `;
+  }).join('');
+}
+
+// ✅ FUNÇÃO PRINCIPAL
+function carregarEventos() {
+  const buscaInput = document.getElementById('busca-eventos');
+  const termoBusca = buscaInput ? buscaInput.value.toLowerCase().trim() : '';
+  filtrarEventos(termoBusca);
 }
