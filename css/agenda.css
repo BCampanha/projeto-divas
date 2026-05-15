@@ -698,3 +698,18 @@ body {
     display: block;
   }
 }
+
+/* =========================================
+   ESTILOS DOS EVENTOS DA ONG
+   ========================================= */
+
+/* Estilo do ícone para Evento ONG */
+.icone-timeline.evento-ong {
+  background-color: #860f37; /* Mesma cor da etiqueta EVENTO ONG */
+  border-color: #860f37;
+  color: #fff;
+
+  img{
+    width: 18px;
+  }
+}

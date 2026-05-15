@@ -113,8 +113,9 @@ body {
 input {
         border: none;
         border-radius: 7px;
-        padding: 12px 88px;
+        padding: 12px 9px;
         background: #fff;
+        width: 320px;
 
         &:hover { border: 1px solid #EF6A85; }
         margin-bottom: 15px;

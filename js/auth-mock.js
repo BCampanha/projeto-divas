@@ -9,41 +9,35 @@ const AuthMock = {
   // BANCO DE DADOS SIMULADO (localStorage)
   // ============================================
   
-  // Admin padrão (email/senha fixos)
   adminCredenciais: {
     email: 'admin@projetodivas.org',
     senha: 'admin123'
   },
 
-  // Salvar usuário no "banco"
   salvarUsuario(usuario) {
     const usuarios = this.getUsuarios();
-    usuario.id = Date.now().toString(); // ID único
+    usuario.id = Date.now().toString();
     usuario.criadoEm = new Date().toISOString();
     usuarios.push(usuario);
     localStorage.setItem('usuariosProjetoDivas', JSON.stringify(usuarios));
   },
 
-  // Pegar todos os usuários
   getUsuarios() {
     const dados = localStorage.getItem('usuariosProjetoDivas');
     return dados ? JSON.parse(dados) : [];
   },
 
-   // ============================================
+  // ============================================
   // AUTENTICAÇÃO
   // ============================================
 
-  // Login simulado
   async login(email, senha) {
-    // Simula delay de rede (500ms)
     await new Promise(resolve => setTimeout(resolve, 500));
 
-    // Verifica se é admin
     if (email === this.adminCredenciais.email && senha === this.adminCredenciais.senha) {
       const adminUser = {
         id: 'admin',
-        nome: 'Administrador',
+        nome: 'Maria Oliveira',
         email: email,
         tipo: 'admin'
       };
@@ -51,7 +45,6 @@ const AuthMock = {
       return { sucesso: true, usuario: adminUser, tipo: 'admin' };
     }
 
-    // Busca usuário no "banco"
     const usuarios = this.getUsuarios();
     const usuario = usuarios.find(u => u.email === email && u.senha === senha);
 
@@ -63,13 +56,11 @@ const AuthMock = {
     return { sucesso: false, erro: 'Email ou senha inválidos' };
   },
 
-  // Cadastro simulado
   async cadastro(nome, email, telefone, senha) {
     await new Promise(resolve => setTimeout(resolve, 500));
 
     const usuarios = this.getUsuarios();
     
-    // Verifica se email já existe
     if (usuarios.find(u => u.email === email)) {
       return { sucesso: false, erro: 'Este email já está cadastrado' };
     }
@@ -78,17 +69,19 @@ const AuthMock = {
       nome,
       email,
       telefone,
-      senha, // Em produção: NUNCA salve senha assim! Use hash.
+      senha,
       tipo: 'paciente'
     };
 
     this.salvarUsuario(novoUsuario);
     this.setUsuarioLogado(novoUsuario);
     
+    // ✅ Garante que novo usuário comece com lembretes vazios
+    this.limparLembretesUsuario(novoUsuario.id);
+    
     return { sucesso: true, usuario: novoUsuario };
   },
 
-  // Logout
   logout() {
     localStorage.removeItem('usuarioLogadoProjetoDivas');
     window.location.href = './index.html';
@@ -98,29 +91,60 @@ const AuthMock = {
   // SESSÃO DO USUÁRIO
   // ============================================
 
-  // Salva usuário logado
   setUsuarioLogado(usuario) {
-    // Remove senha antes de salvar na sessão
     const usuarioSemSenha = { ...usuario };
     delete usuarioSemSenha.senha;
     localStorage.setItem('usuarioLogadoProjetoDivas', JSON.stringify(usuarioSemSenha));
   },
 
-  // Pega usuário logado
   getUsuarioLogado() {
     const dados = localStorage.getItem('usuarioLogadoProjetoDivas');
     return dados ? JSON.parse(dados) : null;
   },
 
-  // Verifica se está logado
   estaLogado() {
     return this.getUsuarioLogado() !== null;
   },
 
-  // Verifica se é admin
   isAdmin() {
     const usuario = this.getUsuarioLogado();
     return usuario && (usuario.tipo === 'admin' || usuario.email === this.adminCredenciais.email);
+  },
+
+  // ============================================
+  // GERENCIAMENTO DE LEMBRETES POR USUÁRIO
+  // ============================================
+
+  _getLembretesKey(usuarioId) {
+    return `lembretes_${usuarioId}`;
+  },
+
+  salvarLembretesUsuario(usuarioId, lembretes) {
+    localStorage.setItem(this._getLembretesKey(usuarioId), JSON.stringify(lembretes));
+  },
+
+  getLembretesUsuario(usuarioId) {
+    const dados = localStorage.getItem(this._getLembretesKey(usuarioId));
+    return dados ? JSON.parse(dados) : [];
+  },
+
+  adicionarLembrete(usuarioId, lembrete) {
+    const lembretes = this.getLembretesUsuario(usuarioId);
+    lembrete.id = Date.now().toString();
+    lembrete.criadoEm = new Date().toISOString();
+    lembretes.push(lembrete);
+    this.salvarLembretesUsuario(usuarioId, lembretes);
+    return lembrete;
+  },
+
+  excluirLembrete(usuarioId, lembreteId) {
+    const lembretes = this.getLembretesUsuario(usuarioId);
+    const filtrados = lembretes.filter(l => l.id !== lembreteId);
+    this.salvarLembretesUsuario(usuarioId, filtrados);
+  },
+
+  limparLembretesUsuario(usuarioId) {
+    localStorage.removeItem(this._getLembretesKey(usuarioId));
   }
 };
 
@@ -128,16 +152,14 @@ const AuthMock = {
 // FUNÇÕES DE REDIRECIONAMENTO
 // ============================================
 
-// Redireciona baseado no tipo de usuário
 function redirecionarPorTipo(usuario) {
   if (usuario.tipo === 'admin' || usuario.email === AuthMock.adminCredenciais.email) {
-    window.location.href = './admin.html'; // Página do admin
+    window.location.href = './admin.html';
   } else {
-    window.location.href = './agenda.html'; // Página da agenda
+    window.location.href = './agenda.html';
   }
 }
 
-// Protege páginas (redireciona se não estiver logado)
 function protegerPagina() {
   if (!AuthMock.estaLogado()) {
     window.location.href = './index.html';
@@ -148,3 +170,22 @@ function protegerPagina() {
 window.AuthMock = AuthMock;
 window.protegerPagina = protegerPagina;
 window.redirecionarPorTipo = redirecionarPorTipo;
+
+
+// ============================================
+// ✅ NOVO: FUNÇÃO GLOBAL DE LOGOUT
+// ============================================
+
+function fazerLogout(event) {
+  if (event) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+  
+  if (confirm('Deseja realmente sair do sistema?')) {
+    AuthMock.logout();
+  }
+}
+
+// Exporta para uso global
+window.fazerLogout = fazerLogout;
