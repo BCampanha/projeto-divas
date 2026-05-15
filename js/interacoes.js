@@ -106,14 +106,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ============================================
-  // 6. RENDERIZAÇÃO DOS LEMBRETES
+  // 6. CRIAÇÃO DOS ELEMENTOS (LEMBRETES + EVENTOS)
   // ============================================
 
+  // ✅ FUNÇÃO ORIGINAL - Cria card de lembrete pessoal
   function criarElementoLembrete(lembrete) {
     const config = configEtiquetas[lembrete.etiqueta];
     const elemento = document.createElement("div");
     elemento.classList.add("lembrete-item");
     elemento.dataset.id = lembrete.id;
+
     elemento.innerHTML = `
       <div class="icone-timeline ${config.classe}">
         <img src="${config.icone}" alt="${config.label}">
@@ -136,39 +138,100 @@ document.addEventListener("DOMContentLoaded", () => {
     return elemento;
   }
 
-  function renderizarLembretes() {
-    if (!timeline) return;
-    const lembretes = carregarLembretes();
-    timeline.innerHTML = "";
+  // ✅ NOVA FUNÇÃO - Cria card de evento da ONG
+  function criarElementoEvento(evento) {
+    const elemento = document.createElement("div");
+    elemento.classList.add("lembrete-item");
+    elemento.dataset.id = evento.id;
     
-    if (lembretes.length === 0) {
+    elemento.innerHTML = `
+      <div class="icone-timeline evento-ong">
+        <img src="./images/icone-20.png" alt="Evento ONG">
+      </div>
+      <div class="card-lembrete">
+        <div class="card-header">
+          <span class="card-hora">${evento.horario}</span>
+          <span class="etiqueta evento">EVENTO ONG</span>
+        </div>
+        <h3 class="card-titulo">${evento.titulo}</h3>
+        <p class="card-descricao">Facilitadora: ${evento.facilitadora}</p>
+        ${evento.descricao ? `<p class="card-descricao" style="margin-top: 5px;">${evento.descricao}</p>` : ''}
+        <small class="card-data">
+          <img src="./images/icone-16.png" alt=""> ${evento.data}
+        </small>
+      </div>
+    `;
+    return elemento;
+  }
+
+  // ============================================
+  // 7. RENDERIZAÇÃO COMBINADA (LEMBRETES + EVENTOS)
+  // ============================================
+
+  function renderizarTudo() {
+    if (!timeline) return;
+
+    const lembretes = carregarLembretes();
+    const eventosPublicos = JSON.parse(localStorage.getItem('eventosPublicos') || '[]');
+    
+    const todosItems = [
+      ...lembretes.map(l => ({ ...l, tipo: 'pessoal' })),
+      ...eventosPublicos.map(e => ({ ...e, tipo: 'evento-ong' }))
+    ];
+
+    // Limpa a timeline
+    timeline.innerHTML = "";
+
+    if (todosItems.length === 0) {
       if (msgVazia) {
         msgVazia.style.display = "block";
         timeline.appendChild(msgVazia);
       }
     } else {
       if (msgVazia) msgVazia.style.display = "none";
-      lembretes.sort((a, b) => {
-        const [hA, mA] = a.horario.split(":").map(Number);
-        const [hB, mB] = b.horario.split(":").map(Number);
-        return hB * 60 + mB - (hA * 60 + mA);
+      
+      // ✅ LÓGICA DE ORDENAÇÃO PERFEITA (Data Crescente + Horário Crescente)
+      todosItems.sort((a, b) => {
+        // 1. Separa Dia, Mês e Ano
+        const [diaA, mesA, anoA] = a.data.split('/').map(Number);
+        const [horaA, minA] = a.horario.split(':').map(Number);
+        
+        const [diaB, mesB, anoB] = b.data.split('/').map(Number);
+        const [horaB, minB] = b.horario.split(':').map(Number);
+
+        // 2. Cria um objeto Date completo para cada item
+        // Nota: O mês no JavaScript começa em 0 (Janeiro = 0), por isso o "-1"
+        const dataCompletaA = new Date(anoA, mesA - 1, diaA, horaA, minA);
+        const dataCompletaB = new Date(anoB, mesB - 1, diaB, horaB, minB);
+
+        // 3. Compara os dois momentos
+        // Se a diferença for negativa, A é anterior a B (vem primeiro)
+        return dataCompletaA - dataCompletaB;
       });
-      lembretes.forEach((lembrete) => {
-        timeline.appendChild(criarElementoLembrete(lembrete));
+
+      // Desenha cada item na ordem certa
+      todosItems.forEach(item => {
+        if (item.tipo === 'pessoal') {
+          timeline.appendChild(criarElementoLembrete(item));
+        } else {
+          timeline.appendChild(criarElementoEvento(item));
+        }
       });
     }
   }
 
-  // Função global para excluir (usada no onclick do HTML)
-  window.excluirLembreteGlobal = function (id) {
+// ============================================
+  // FUNÇÃO GLOBAL DE EXCLUSÃO
+  // ============================================
+  window.excluirLembreteGlobal = function(id) {
     if (confirm("Deseja realmente excluir este lembrete?")) {
       excluirLembrete(id);
-      renderizarLembretes();
+      renderizarTudo();
     }
   };
 
   // ============================================
-  // 7. SUBMISSÃO DO FORMULÁRIO
+  // 8. SUBMISSÃO DO FORMULÁRIO
   // ============================================
   if (formulario && timeline) {
     formulario.addEventListener("submit", (e) => {
@@ -194,20 +257,28 @@ document.addEventListener("DOMContentLoaded", () => {
         formulario.reset();
         botoesEtiqueta.forEach((b) => b.classList.remove("active"));
         etiquetaSelecionada = null;
-        renderizarLembretes();
+        renderizarTudo();
       }
     });
   }
 
   // ============================================
-  // 8. CARREGAMENTO INICIAL
+  // 9. CARREGAMENTO INICIAL
   // ============================================
-  renderizarLembretes();
+  renderizarTudo();
+  
+  // Atualiza automaticamente se evento for publicado em outra aba
+  window.addEventListener('storage', (e) => {
+    if (e.key === 'eventosPublicos') {
+      renderizarTudo();
+    }
+  });
 });
 
 // ============================================
-// 9. DATA ATUAL NO TOPO
+// 10. FUNÇÕES GLOBAIS (FORA DO DOMContentLoaded)
 // ============================================
+
 function atualizarDataTopo() {
   const dataHoje = new Date();
   const meses = ["Jan", "Fev", "Mar", "Abr", "Maio", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
@@ -221,9 +292,6 @@ function atualizarDataTopo() {
   if (spanData) spanData.innerHTML = textoData;
 }
 
-// ============================================
-// 10. ATUALIZAR NOME DO USUÁRIO
-// ============================================
 function atualizarNomeUsuario() {
   const usuario = AuthMock.getUsuarioLogado();
   if (!usuario) return;
