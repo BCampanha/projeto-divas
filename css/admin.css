@@ -224,6 +224,61 @@ body {
   font-size: 56px;
 }
 
+/* Botão de excluir inline (no canto do card) */
+.btn-excluir-inline {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-excluir-inline:hover {
+  background: rgba(134, 15, 55, 0.1);
+}
+
+.btn-excluir-inline img {
+  width: 18px;
+  height: 18px;
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+
+.btn-excluir-inline:hover img {
+  opacity: 1;
+}
+
+/* Ajuste no header do card */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.card-header > div:first-child {
+  flex: 1;
+}
+
+.card-header .card-hora {
+  display: block;
+  font-size: 14px;
+  color: #860f37;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.card-header .card-titulo {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2d1a22;
+  margin: 0;
+}
+
 /* =========================================
    5. BARRA DE BUSCA
    ========================================= */

@@ -64,6 +64,34 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+// ============================================
+  // MÁSCARA DE HORÁRIO (HH:MM)
+  // ============================================
+  const horarioInput = document.getElementById("horario-input");
+  if (horarioInput) {
+    horarioInput.addEventListener("input", function (e) {
+      let valor = e.target.value.replace(/\D/g, ""); // Remove tudo que não é dígito
+      if (valor.length > 4) valor = valor.slice(0, 4);
+      
+      if (valor.length > 2) {
+        valor = valor.slice(0, 2) + ":" + valor.slice(2);
+      }
+      
+      e.target.value = valor;
+    });
+
+    // Validação ao sair do campo
+    horarioInput.addEventListener("blur", function (e) {
+      const valor = e.target.value;
+      const regexHora = /^([01]\d|2[0-3]):([0-5]\d)$/;
+      
+      if (valor && !regexHora.test(valor)) {
+        alert("Por favor, insira um horário válido (ex: 14:30)");
+        e.target.value = "";
+      }
+    });
+  }
+
 // ✅ FUNÇÃO DE FILTRAGEM
 function filtrarEventos(termoBusca = '') {
   const timeline = document.getElementById('timeline-eventos');
@@ -96,7 +124,7 @@ function filtrarEventos(termoBusca = '') {
   renderizarEventos(eventos, timeline);
 }
 
-// ✅ FUNÇÃO DE RENDERIZAÇÃO
+// ✅ FUNÇÃO DE RENDERIZAÇÃO (COM BOTÃO DE EXCLUIR E DESCRIÇÃO)
 function renderizarEventos(eventos, timeline) {
   const meses = ['JAN', 'FEV', 'MAR', 'ABR', 'MAI', 'JUN', 'JUL', 'AGO', 'SET', 'OUT', 'NOV', 'DEZ'];
 
@@ -114,16 +142,40 @@ function renderizarEventos(eventos, timeline) {
         </div>
         <div class="card-lembrete">
           <div class="card-header">
-            <span class="card-hora">${evento.horario}</span>
-            <span class="etiqueta evento">EVENTO ONG</span>
+            <div>
+              <span class="card-hora">${evento.horario}</span>
+              <h3 class="card-titulo">${evento.titulo}</h3>
+            </div>
+            <div style="display: flex; align-items: center; gap: 15px;">
+              <span class="etiqueta evento">EVENTO ONG</span>
+              <button class="btn-excluir-inline" onclick="excluirEventoGlobal('${evento.id}')" title="Excluir evento">
+                <img src="./images/icone-15.png" alt="Excluir">
+              </button>
+            </div>
           </div>
-          <h3 class="card-titulo">${evento.titulo}</h3>
           <p class="card-descricao">Sessão presencial<br>Facilitadora: ${evento.facilitadora}</p>
+          ${evento.descricao ? `<p class="card-descricao" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #f0e6ed;">${evento.descricao}</p>` : ''}
         </div>
       </div>
     `;
   }).join('');
 }
+
+// ✅ FUNÇÃO GLOBAL PARA EXCLUIR EVENTO
+window.excluirEventoGlobal = function(id) {
+  if (confirm('Deseja realmente excluir este evento?')) {
+    let eventos = JSON.parse(localStorage.getItem('eventosPublicos') || '[]');
+    eventos = eventos.filter(e => e.id !== id);
+    localStorage.setItem('eventosPublicos', JSON.stringify(eventos));
+    
+    // Recarrega a lista
+    const buscaInput = document.getElementById('busca-eventos');
+    const termoBusca = buscaInput ? buscaInput.value.toLowerCase().trim() : '';
+    filtrarEventos(termoBusca);
+    
+    alert('Evento excluído com sucesso! ✅');
+  }
+};
 
 // ✅ FUNÇÃO PRINCIPAL
 function carregarEventos() {
