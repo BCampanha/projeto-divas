@@ -4,44 +4,122 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Projeto Divas</title>
+    <link rel="icon" type="image/png" href="./images/logo.png">
     <link rel="stylesheet" href="./css/admin.css">
 </head>
 <body>
-    <div class="admin-container">
-        <header>
-            <h1>Painel Administrativo</h1>
-            <button onclick="AuthMock.logout()">Sair</button>
-        </header>
-        
-        <main>
-            <h2>Bem-vindo, Administrador!</h2>
-            <p>Área restrita para gestão do Projeto Divas.</p>
-            
-            <!-- Aqui você vai adicionar as funcionalidades do admin -->
-            <div class="admin-cards">
-                <div class="card">
-                    <h3>Gerenciar Usuários</h3>
-                    <p>Visualize e gerencie os pacientes cadastrados</p>
-                </div>
-                <div class="card">
-                    <h3>Agendamentos</h3>
-                    <p>Gerencie consultas e exames</p>
-                </div>
-                <div class="card">
-                    <h3>Relatórios</h3>
-                    <p>Acompanhe métricas e estatísticas</p>
+    <div class="dashboard-grid">
+        <!-- SIDEBAR ESQUERDA -->
+        <aside class="sidebar-esq">
+            <div class="sidebar-topo">
+                <div class="logo">
+                    <img src="./images/logo.png" alt="Projeto Divas" />
+                    <span>Projeto Divas</span>
                 </div>
             </div>
+
+            <nav class="menu-navegacao">
+                <a href="#" class="bt-navegacao active" onclick="ativarBotao(event, this)">
+                    <img src="./images/icone-12.png" alt="" />
+                    <span>Visão Geral</span>
+                </a>
+
+                <a href="#" class="bt-navegacao" onclick="fazerLogout(event)">
+                    <img src="./images/icone-8.png" alt="" />
+                    <span>Sair</span>
+                </a>
+            </nav>
+
+            <div class="perfil">
+                <div class="avatar">
+                    <img src="./images/icone-9.png" alt="Avatar" />
+                </div>
+                <span class="nome-paciente" id="nome-sidebar">Carregando...</span>
+            </div>
+        </aside>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="conteudo-principal">
+            <!-- Cabeçalho -->
+            <div class="conteudo-superior">
+                <h1>
+                    <span class="titulo-admin">PAINEL ADMINISTRATIVO</span><br>
+                    Eventos da <span class="titulo-cursivo">Agenda</span>
+                </h1>
+            </div>
+
+            <!-- Barra de Busca -->
+            <div class="busca-container">
+                <span class="busca-label">TODOS OS EVENTOS</span>
+                <div class="busca-input-wrapper">
+                    <img src="./images/icone-busca.png" alt="Buscar" class="busca-icone" />
+                    <input type="text" id="busca-eventos" placeholder="Buscar por nome ou data" />
+                </div>
+            </div>
+
+            <!-- TIMELINE DE EVENTOS PUBLICADOS -->
+            <div class="timeline" id="timeline-eventos">
+                <!-- JS vai injetar os cards de eventos aqui -->
+            </div>
         </main>
+
+        <!-- SIDEBAR DIREITA - FORMULÁRIO DE PUBLICAÇÃO -->
+        <aside class="sidebar-dir">
+            <h3 class="titulo">Novo Evento</h3>
+
+            <div class="calendario">
+                <div class="calendario-header">
+                    <button class="btn-navegacao" id="btn-anterior">&lt;</button>
+                    <h3 id="mes-ano">Abril 2026</h3>
+                    <button class="btn-navegacao" id="btn-proximo">&gt;</button>
+                </div>
+
+                <div class="dias-semana">
+                    <span>DOM</span>
+                    <span>SEG</span>
+                    <span>TER</span>
+                    <span>QUA</span>
+                    <span>QUI</span>
+                    <span>SEX</span>
+                    <span>SÁB</span>
+                </div>
+
+                <div class="dias-mes" id="grid-dias"></div>
+            </div>
+
+            <!-- FORMULÁRIO DE PUBLICAÇÃO DE EVENTO -->
+            <form id="form-publicar-evento" class="form-novo-lembrete">
+                <div class="campo-data-hora">
+                    <div class="input-wrapper">
+                        <label>DATA</label>
+                        <input type="text" id="data-input" placeholder="DD/MM/AAAA" readonly required />
+                        <img src="./images/icone-10.png" alt="Calendário" class="icone-input" />
+                    </div>
+
+                    <div class="input-wrapper">
+                        <label>HORÁRIO</label>
+                        <input type="text" id="horario-input" placeholder="--:--" maxlength="5" required />
+                        <img src="./images/icone-11.png" alt="Relógio" class="icone-input" />
+                    </div>
+                </div>
+
+                <label>TÍTULO DO EVENTO</label>
+                <input type="text" id="titulo-input" placeholder="Ex: Roda de Conversa" required />
+
+                <label>FACILITADORA</label>
+                <input type="text" id="facilitadora-input" placeholder="Ex: Dra. Ana Luiza" required />
+
+                <label>DESCRIÇÃO</label>
+                <textarea id="descricao-input" placeholder="Informações adicionais, local, o que levar..." rows="3" required></textarea>
+
+                <button type="submit" class="btn-salvar">Publicar Evento</button>
+            </form>
+        </aside>
     </div>
 
-    <!-- Scripts -->
+    <!-- SCRIPTS -->
     <script src="./js/auth-mock.js"></script>
-    <script>
-        // Protege a página (só admin acessa)
-        if (!AuthMock.isAdmin()) {
-            window.location.href = './index.html';
-        }
-    </script>
+    <script src="./js/calendario.js"></script>
+    <script src="./js/admin.js"></script>
 </body>
 </html>
