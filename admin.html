@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Projeto Divas</title>
+    <link rel="stylesheet" href="./css/admin.css">
+</head>
+<body>
+    <div class="admin-container">
+        <header>
+            <h1>Painel Administrativo</h1>
+            <button onclick="AuthMock.logout()">Sair</button>
+        </header>
+        
+        <main>
+            <h2>Bem-vindo, Administrador!</h2>
+            <p>Área restrita para gestão do Projeto Divas.</p>
+            
+            <!-- Aqui você vai adicionar as funcionalidades do admin -->
+            <div class="admin-cards">
+                <div class="card">
+                    <h3>Gerenciar Usuários</h3>
+                    <p>Visualize e gerencie os pacientes cadastrados</p>
+                </div>
+                <div class="card">
+                    <h3>Agendamentos</h3>
+                    <p>Gerencie consultas e exames</p>
+                </div>
+                <div class="card">
+                    <h3>Relatórios</h3>
+                    <p>Acompanhe métricas e estatísticas</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="./js/auth-mock.js"></script>
+    <script>
+        // Protege a página (só admin acessa)
+        if (!AuthMock.isAdmin()) {
+            window.location.href = './index.html';
+        }
+    </script>
+</body>
+</html>
