@@ -37,7 +37,7 @@ const AuthMock = {
     if (email === this.adminCredenciais.email && senha === this.adminCredenciais.senha) {
       const adminUser = {
         id: 'admin',
-        nome: 'Administrador',
+        nome: 'Maria Oliveira',
         email: email,
         tipo: 'admin'
       };
