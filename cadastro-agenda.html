@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projeto Divas</title>
+     <link rel="icon" type="image/png" href="./images/logo.png">
+    <link rel="stylesheet" href="./css/cadastro-agenda.css" />
+  </head>
+  <body>
+    <div class="conteiner">
+      <div class="titulo">
+        <h1>Cadastro</h1>
+        <span>Já tem uma conta? <a href="./index.html#agenda">Login</a></span>
+      </div>
+
+      <!-- esperando backend -->
+      <form action="#" id="form-cadastro" method="post">
+        <label for="cadastro-nome">NOME</label>
+        <input type="text" id="cadastro-nome" name="nome" required/>
+
+        <label for="cadastro-email">EMAIL</label>
+        <input type="email" id="cadastro-email" name="email" required/>
+
+        <label for="cadastro-senha">SENHA</label>
+        <input type="password" id="cadastro-senha" name="senha" required/>
+
+        <button type="submit">Cadastrar</button>
+      </form>
+    </div>
+
+    <img src="/images/foto-12.png" alt="" class="passaro">
+
+    <!--Scripts-->
+    <!-- api.js deve ser o primeiro: define DivasAPI e Auth -->
+    <script src="./js/api.js"></script>
+    <script src="./js/cadastro.js"></script>
+  </body>
+</html>

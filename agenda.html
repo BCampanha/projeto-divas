@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projeto Divas</title>
+     <link rel="icon" type="image/png" href="./images/logo.png">
+    <link rel="stylesheet" href="/css/agenda.css" />
+  </head>
+  <body>
+    <div class="dashboard-grid">
+      <aside class="sidebar-esq">
+        <div class="sidebar-topo">
+          <div class="logo">
+            <img src="./images/logo.png" alt="Projeto Divas" />
+            <span>Projeto Divas</span>
+          </div>
+        </div>
+
+        <nav class="menu-navegacao">
+          <a href="#" class="bt-navegacao active" onclick="ativarBotao(event, this)">
+            <img src="./images/icone-12.png" alt="" />
+            <span>Início</span>
+          </a>
+
+          <a href="#" class="bt-navegacao" onclick="fazerLogout(event)">
+            <img src="./images/icone-8.png" alt="" />
+            <span>Sair</span>
+          </a>
+        </nav>
+
+        <a href="./perfil.html" class="perfil" >
+          <div class="avatar">
+            <img src="./images/icone-9.png" alt="Avatar" />
+          </div>
+          <span class="nome-paciente" id="nome-sidebar">Carregando...</span>
+        </a>
+      </aside>
+
+      <!--CONTEUDO PRINCIPAL-->
+      <main class="conteudo-principal">
+        <!-- Cabeçalho de boas-vindas -->
+        <div class="conteudo-superior">
+          <!--ESPERANDO BACKEND-->
+          <h1>
+            Olá, <span id="nome-paciente">Carregando...</span>
+            <img src="./images/icone-14.png" alt="" />
+          </h1>
+
+          <span id="data-atual">DIA, XX DE MÊS <br />ANO</span>
+        </div>
+
+        <!-- CONTAINER DA TIMELINE (Onde os cards vão aparecer) -->
+        <div class="timeline" id="timeline-lembretes">
+          <!-- MENSAGEM CASO ESTEJA VAZIO -->
+          <div class="mensagem-vazia">
+            <p>
+              Nenhum lembrete para hoje. Use o formulário ao lado para agendar!
+              💊
+            </p>
+          </div>
+
+          <!--JS vai injetar os cards aqui dentro -->
+        </div>
+      </main>
+
+      <!--CALENDÁRIO-->
+      <aside class="sidebar-dir">
+        <h3 class="titulo">Novo Lembrete</h3>
+
+        <div class="calendario">
+          <!-- Header com navegação -->
+          <div class="calendario-header">
+            <button class="btn-navegacao" id="btn-anterior">&lt;</button>
+
+            <h3 id="mes-ano">Abril 2026</h3>
+            <button class="btn-navegacao" id="btn-proximo">&gt;</button>
+          </div>
+
+          <!-- Dias da semana -->
+          <div class="dias-semana">
+            <span>DOM</span>
+            <span>SEG</span>
+            <span>TER</span>
+            <span>QUA</span>
+            <span>QUI</span>
+            <span>SEX</span>
+            <span>SÁB</span>
+          </div>
+
+          <!-- Grid dos dias (preenchido via JS) -->
+          <div class="dias-mes" id="grid-dias"></div>
+        </div>
+
+        <form id="form-lembrete" class="form-novo-lembrete">
+          <!-- DATA E HORA LADO A LADO -->
+          <div class="campo-data-hora">
+            <div class="input-wrapper">
+              <label>DATA</label>
+              <input
+                type="text"
+                id="data-input"
+                placeholder="DD/MM/AAAA"
+                readonly
+                required
+              />
+              <img
+                src="./images/icone-10.png"
+                alt="Calendário"
+                class="icone-input"
+              />
+            </div>
+
+            <div class="input-wrapper">
+              <label>HORÁRIO</label>
+              <input
+                type="text"
+                id="horario-input"
+                placeholder="--:--"
+                maxlength="5"
+                required
+              />
+              <img
+                src="./images/icone-11.png"
+                alt="Relógio"
+                class="icone-input"
+              />
+            </div>
+          </div>
+
+          <label>ETIQUETA</label>
+          <div class="etiquetas-container">
+            <button type="button" class="etiqueta-btn" data-tag="medicacao">
+              Medicação
+            </button>
+            <button type="button" class="etiqueta-btn" data-tag="consulta">
+              Consulta
+            </button>
+            <button type="button" class="etiqueta-btn" data-tag="exame">
+              Exame
+            </button>
+          </div>
+
+          <!-- LOCAL: digitado livremente pela paciente -->
+          <label>LOCAL</label>
+          <input type="text" id="local-input" placeholder="Ex: Hospital das Clínicas, Rua X..." />
+
+          <label>TÍTULO</label>
+          <input
+            type="text"
+            id="titulo-input"
+            placeholder="Ex: Quimioterapia"
+            required
+          />
+
+          <label>DESCRIÇÃO</label>
+          <textarea
+            id="descricao-input"
+            placeholder="Informações adicionais, local, o que levar..."
+            rows="3"
+            required
+          >
+          </textarea>
+
+          <button type="submit" class="btn-salvar">Salvar Lembrete</button>
+        </form>
+      </aside>
+    </div>
+
+    <!-- api.js deve ser o primeiro: define Auth, DivasAPI e helpers globais -->
+    <script src="./js/api.js"></script>
+    <script src="./js/calendario.js"></script>
+    <script src="./js/interacoes.js"></script>
+    <script src="./js/agenda.js"></script>
+    <script src="./js/perfil.js"></script>
+  </body>
+</html>
