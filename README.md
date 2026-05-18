@@ -1,594 +1,275 @@
-Projeto Divas
-Sistema Web Fullstack para apoio a mulheres em tratamento oncológico
+# 💖 Projeto Divas
 
-Plataforma desenvolvida para a ONG Projeto Divas, com foco em acolhimento, organização de consultas, eventos sociais e suporte digital para beneficiárias.
+Sistema web fullstack desenvolvido para a ONG **Projeto Divas**, com o objetivo de ampliar a visibilidade institucional da organização e facilitar o acesso de pacientes, voluntários e comunidade às informações e serviços oferecidos.
 
-✨ Sobre o Projeto
+---
 
-O Projeto Divas é uma aplicação fullstack criada para auxiliar mulheres em tratamento oncológico, oferecendo uma plataforma segura, acessível e organizada para gerenciamento da rotina médica e interação com a ONG.
+## ✨ Visão Geral
 
-O sistema permite que beneficiárias acompanhem consultas, exames e medicações, além de participarem de eventos públicos promovidos pela organização.
+O Projeto Divas foi desenvolvido para oferecer uma experiência digital acessível, organizada e segura para mulheres em tratamento oncológico.
 
-A plataforma também possui um painel administrativo para gerenciamento de eventos e funcionalidades de autenticação segura utilizando JWT.
+A plataforma permite:
 
-🛠 Tecnologias Utilizadas
-🎨 Frontend
-HTML5
-CSS3
-JavaScript Vanilla
-Service Worker (PWA)
-⚙️ Backend
-Java 17
-Spring Boot 3.3.5
-Spring Security
-JWT Authentication
-Spring Data JPA
-Hibernate
-Spring Mail
-Maven
-🗄 Banco de Dados
-MySQL
-Aiven Cloud
-🚀 Funcionalidades
-Funcionalidade	Beneficiária	Admin
-Cadastro e login com JWT	✅	✅
-Agenda pessoal	✅	—
-Consultas, exames e medicações	✅	—
-Visualizar eventos públicos	✅	✅
-Salvar eventos na agenda	✅	—
-Publicar eventos	—	✅
-Excluir eventos	—	✅
-Recuperação de senha por e-mail	✅	✅
-Perfil do usuário	✅	✅
-📂 Estrutura do Projeto
+- 📅 Organização da rotina médica
+- 💖 Participação em eventos da ONG
+- 🔐 Autenticação segura
+- 👩‍💼 Gerenciamento administrativo
+- 📩 Recuperação de senha por e-mail
 
-O projeto está dividido em duas partes principais:
+---
 
-Frontend
+# 📌 Status Atual
 
-Responsável pela interface visual da plataforma, contendo:
+- ✅ Frontend 100% funcional
+- ✅ Sistema de autenticação mockado
+- ✅ Agenda com lembretes pessoais
+- ✅ Painel administrativo funcional
+- ✅ Eventos públicos para pacientes
+- ✅ Estrutura pronta para integração com API REST
 
-Página inicial
-Login
-Agenda pessoal
-Perfil do usuário
-Painel administrativo
-Área de contribuição
-Componentes de calendário e interações
-Backend
+---
 
-Responsável pelas regras de negócio e API REST:
+# 🛠 Tecnologias Utilizadas
 
-Controllers
-Services
-Entidades JPA
-DTOs
-Repositórios
-Segurança com JWT
-Configurações de CORS e autenticação
-⚙️ Como Rodar Localmente
-📋 Pré-requisitos
-Java 17+
-Node.js
-Maven
-🔧 Configuração
+## 🎨 Frontend
+- HTML5
+- CSS3
+- JavaScript Vanilla
+- Service Worker (PWA)
 
-Configure as variáveis de ambiente:
+## ⚙️ Backend
+- Java 17
+- Spring Boot 3.3.5
+- Spring Security
+- JWT Authentication
+- Spring Data JPA
+- Hibernate
+- Spring Mail
+- Maven
 
-DB_URL
-DB_USERNAME
-DB_PASSWORD
-MAIL_USERNAME
-MAIL_PASSWORD
-JWT_SECRET
-▶️ Backend
+## 🗄 Banco de Dados
+- MySQL
+- Aiven Cloud
 
-Execute a aplicação Spring Boot utilizando Maven.
+---
 
-Backend disponível em:
-http://localhost:8080
+# 🚀 Funcionalidades
 
-▶️ Frontend
+| Funcionalidade | Paciente | Admin |
+|---|---|---|
+| Cadastro e login | ✅ | ✅ |
+| Autenticação JWT | ✅ | ✅ |
+| Agenda pessoal | ✅ | — |
+| Consultas, exames e medicações | ✅ | — |
+| Eventos públicos | ✅ | ✅ |
+| Publicação de eventos | — | ✅ |
+| Exclusão de eventos | — | ✅ |
+| Recuperação de senha | ✅ | ✅ |
+| Perfil do usuário | ✅ | ✅ |
 
-Utilize um servidor local para subir os arquivos estáticos.
+---
 
-Frontend disponível em:
-http://localhost:3000
+# 🔐 Autenticação e Autorização
 
-📡 Endpoints da API
-👤 Usuários
-Cadastro de beneficiária
-Login com JWT
-Atualização de perfil
-Recuperação de senha por e-mail
-Redefinição de senha
-📅 Agendamentos
-Criar lembretes
-Listar lembretes pessoais
-Excluir lembretes
-🎉 Eventos Públicos
-Listar eventos da ONG
-Publicar eventos
-Excluir eventos
-Salvar eventos na agenda pessoal
-📍 Localidades
-Cadastro de localidades
-Listagem de localidades
-🔒 Segurança
+O sistema possui dois níveis de acesso:
 
-O sistema utiliza:
+| Tipo | Permissões |
+|---|---|
+| 👩 Paciente | Agenda pessoal, lembretes e perfil |
+| 👨‍💼 Admin | Gerenciamento de eventos e painel administrativo |
 
-JWT Authentication
-Spring Security
-Controle de permissões por perfil
-Senhas criptografadas
-Recuperação de senha via e-mail
-💡 Futuras Melhorias
-📱 Aplicativo mobile
-🔔 Notificações push
-📊 Dashboard administrativo
-📆 Integração com Google Calendar
-💬 Área de apoio psicológico online
-👨‍💻 Autor
+A autenticação foi estruturada utilizando JWT, garantindo segurança e separação de permissões entre pacientes e administradores.
 
-Desenvolvido por Elias Martins 🚀
+---
 
-💖 Projeto desenvolvido com propósito social
-projeto-divas
-Sistema web para divulgação institucional e apoio organizacional da ONG Projeto Divas, a fim de ampliar sua visibilidade e facilitar o acesso de pacientes, voluntários e comunidade às informações e serviços oferecidos.
-
-📌 Visão Geral do mock
-Foi desenvolvido um backend simulado (mock) utilizando localStorage para testes de navegação e usabilidade do frontend.
-
-Para conectar o sistema à API real, siga as instruções abaixo.
-
-Status atual:
-
-✅ Frontend 100% funcional
-✅ Sistema de autenticação mockado
-✅ Agenda com lembretes pessoais
-✅ Painel administrativo para publicação de eventos
-✅ Eventos públicos visíveis para todos os pacientes
-Para conectar o sistema à API real, siga as instruções abaixo.
-
-📁 Estrutura da pasta js
-📂 js/
-├── auth-mock.js      ← (COMPARTILHADO) Simulação do backend
-├── interacoes.js     ← (COMPARTILHADO) Máscaras, calendário, scroll, etc.
-
-├── atividades.js     ← (ESPECÍFICO) Visualização dos cards por categoria
-├── filtros.js        ← (ESPECÍFICO) Filtros de botões e exibição por categoria
-├── login.js          ← (ESPECÍFICO) Lógica da página inicial
-├── cadastro.js       ← (ESPECÍFICO) Lógica da página de cadastro
-├── agenda.js         ← (ESPECÍFICO) Lembretes, saudação e data atual
-└── perfil.js         ← (ESPECÍFICO) Dados da conta
-🔐 Autenticação e Autorização
-Níveis de Acesso
-O sistema possui dois tipos de usuário:
-
-Tipo	Acesso
-paciente	Agenda pessoal, perfil e lembretes individuais
-admin	Painel administrativo e publicação de eventos para todos
-Verificação no Frontend:
-// Verifica se é admin
-if (!AuthMock.isAdmin()) {
-  window.location.href = './index.html';
-}
-
-// O método isAdmin() verifica:
-// 1. usuario.tipo === 'admin'
-// 2. OU email === 'admin@projetodivas.org'
-Endpoint de Verificação Sugerido
-GET /api/usuario/me/role
-Authorization: Bearer <token>
-
-# Resposta:
-{
-  "tipo": "admin",
-  "permissoes": ["publicar_eventos", "gerenciar_usuarios"]
-}
-📢 Eventos Públicos da ONG
-Eventos publicados pelo admin aparecem na agenda de todos os pacientes. ##Diferença entre Lembretes e Eventos:
-
-Característica	Lembrete Pessoal	Evento Público
-Quem cria	Paciente	Admin
-Quem vê	Apenas o criador	Todos os pacientes
-Armazenamento	lembretes_{userId}	eventosPublicos
-Pode excluir	Criador	Apenas Admin
-Ícone	Varia por etiqueta	Sempre icone-20.png
-Estrutura de Dados: Evento Público
-{
-  id: string,
-  titulo: string,
-  facilitadora: string,    // Nome de quem conduz o evento
-  data: string,            // DD/MM/YYYY
-  horario: string,         // HH:mm
-  descricao: string,
-  publicadoEm: ISO string, // Data de publicação
-  publicadoPor: string,    // ID do admin
-  tipo: 'evento-ong'
-}
-Fluxo de Integração
-Admin publica evento → POST /api/eventos-publicos
-Backend salva no banco
-Paciente abre agenda → GET /api/agenda
-Backend retorna:
-{
-  "lembretesPessoais": [...],
-  "eventosPublicos": [...]
-}
-Frontend mescla e ordena por data/horário
-🔐 Arquivo principal: /js/auth-mock.js
-Funções disponíveis
-AuthMock.login(email, senha)
-AuthMock.cadastro(nome, email, telefone, senha)
-AuthMock.getUsuarioLogado()
-AuthMock.estaLogado()
-AuthMock.isAdmin()
-AuthMock.getUsuarios()
-AuthMock.salvarUsuario(usuario)
-AuthMock.adicionarLembrete(usuarioId, lembrete)
-AuthMock.getLembretesUsuario(usuarioId)
-AuthMock.excluirLembrete(usuarioId, lembreteId)
-🔄 Como substituir pela API real?
-✅ Método 1 — Criar um novo arquivo (RECOMENDADO)
-Crie um novo arquivo:
-
-/js/auth-api.js
-Implemente as mesmas funções existentes no auth-mock.js.
-
-Depois, altere no HTML:
-
-Antes
-<script src="./js/auth-mock.js"></script>
-Depois
-<script src="./js/auth-api.js"></script>
-✅ Método 2 — Modificar o arquivo existente
-Edite diretamente o auth-mock.js.
-
-Substitua os usos de localStorage por chamadas com:
-
-fetch()
-axios
-⚠️ Importante: manter os mesmos nomes de funções para evitar quebrar o frontend.
-
-📡 Exemplo usando fetch
-Antes
-salvarLembretesStorage(lembretes) {
-  localStorage.setItem('lembretes', JSON.stringify(lembretes));
-}
-Depois
-async salvarLembretesStorage(lembretes) {
-  try {
-    const response = await fetch(
-      'https://api.projetodivas.com/lembretes',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': Bearer ${this.getToken()}
-        },
-        body: JSON.stringify(lembretes)
-      }
-    );
-
-    return await response.json();
-
-  } catch (error) {
-    console.error('Erro ao salvar lembrete:', error);
-    throw error;
-  }
-}
-📡 Endpoints necessários
-##Autenticação e Usuários:
-
-Método	Endpoint	Função
-POST	/api/login	Autenticar usuário
-POST	/api/cadastro	Cadastrar usuário
-GET	/api/usuario/:me	Dados do usuário logado
-PUT	/api/usuario/:id	Buscar dados do usuário
-PUT	/api/usuario/:id	Atualizar usuário
-GET	/api/usuarios	Listar usuários (admin)
-##Lembretes Pessoais:
-
-Método	Endpoint	Função
-GET	/api/lembretes	Listar lembretes do usuário
-POST	/api/lembretes	Criar lembrete
-DELET	/api/lembretes/:id	Excluir lembrete
-##Eventos Públicos (NOVO):
-
-Método	Endpoint	Função
-GET	/api/eventos-publicos	Listar todos os eventos
-POST	/api/eventos-publicos	Publicar evento (admin)
-PUT	/api/eventos-publicos/:id	Editar evento (admin)
-DELET	/api/eventos-publicos/:id	Excluir evento (admin)
-##Agenda Consolidada
-
-Método	Endpoint	Função
-GET	/api/AGENDA	Retorna lembretes + eventos públicos ordenados
-📊 Estrutura de dados esperada
-👤 Usuário
-{
-  id: string,
-  nome: string,
-  email: string,
-  telefone: string,
-  senha: string, // HASH
-  tipo: 'paciente' | 'admin',
-  criadoEm: ISO date string
-}
-📅 Lembrete Pessoal
-{
-  id: string,
-  usuarioId: string,
-  data: string, // DD/MM/YYYY
-  horario: string, // HH:mm
-  titulo: string,
-  descricao: string,
-  etiqueta: 'medicacao' | 'consulta' | 'exame',
-  criadoEm: ISO date string
-}
-🤝 Evento Público
-{
-  id: string,
-  titulo: string,
-  facilitadora: string,
-  data: string, // DD/MM/YYYY
-  horario: string, // HH:mm
-  descricao: string,
-  publicadoEm: ISO date string,
-  publicadoPor: string, // ID do admin
-  tipo: 'evento-ong'
-}
-🔧 Arquivos que podem precisar de ajustes
-/js/auth-mock.js   ← PRINCIPAL (substituir por auth-api.js)
-/js/login.js       ← Ajustar tratamento de erros
-/js/cadastro.js    ← Ajustar tratamento de erros
-/js/agenda.js      ← Buscar lembretes e eventos da API
-/js/admin.js       ← Publicar/gerenciar eventos via API
-/js/perfil.js      ← Buscar dados do usuário da API
-🎯 Checklist para Integração
-🔐 Auth & Usuários
- Configurar URL base da API
- Implementar POST /api/login com JWT
- Implementar POST /api/cadastro com validação de email único
- Implementar hash de senha com bcrypt ou argon2
- Criar middleware de verificação de token
- Criar middleware de verificação de role (admin / paciente)
- Implementar refresh token
-📝 Lembretes Pessoais
- Implementar GET /api/lembretes (filtrado por usuarioId)
- Implementar POST /api/lembretes (validar usuário logado)
- Implementar DELETE /api/lembretes/:id (validar permissão do dono)
-🤝 Eventos Públicos
- Implementar GET /api/eventos-publicos (público ou autenticado)
- Implementar POST /api/eventos-publicos (apenas admin)
- Implementar PUT /api/eventos-publicos/:id (apenas admin)
- Implementar DELETE /api/eventos-publicos/:id (apenas admin)
-🗓️ Agenda do Paciente
- Criar endpoint que retorna lembretes + eventos públicos mesclados
- Implementar ordenação por data/horário no backend (ou frontend)
-✅ Testes de Fluxo
- Testar fluxo: cadastro → login → criar lembrete → visualizar na agenda
- Testar fluxo: login admin → publicar evento → visualizar na agenda do paciente
- Testar exclusão de lembrete (somente o dono pode excluir)
- Testar exclusão de evento (somente admin pode excluir)
- Testar acesso não autorizado às rotas de admin
- Testar ordenação correta (eventos mais próximos primeiro)
-🚀 Produção
- Configurar variáveis de ambiente para URL da API
- Habilitar HTTPS obrigatório
- Implementar rate limiting nas rotas de autenticação
- Configurar backup automático do banco de dados
- Implementar logs de erro
- Validar dados de entrada
- Configurar CORS corretamente
-📝 Notas Importantes
-Ordenação da Agenda: O frontend já ordena automaticamente por data/horário (mais próximo primeiro). O backend pode fazer isso também para otimização.
-IDs Únicos: Garantir que o backend gere UUIDs ou IDs únicos para cada registro.
-Datas: Manter o formato DD/MM/YYYY para exibição e ISO string para armazenamento.
-Senhas: NUNCA armazenar em texto puro. Usar bcrypt ou argon2.
-JWT: Implementar expiração de token (sugestão: 1 hora) + refresh token.
-
-
-utilize esse como base
-💖 Projeto Divas
-
-Sistema web fullstack desenvolvido para a ONG Projeto Divas, com o objetivo de ampliar a visibilidade institucional da organização e facilitar o acesso de pacientes, voluntários e comunidade às informações, eventos e serviços oferecidos.
-
-A plataforma oferece uma experiência digital acessível, segura e organizada para mulheres em tratamento oncológico, permitindo o gerenciamento da rotina médica, participação em eventos da ONG e interação com funcionalidades administrativas.
-
-✨ Visão Geral do Projeto
-
-O sistema foi inicialmente desenvolvido com um backend simulado utilizando localStorage, permitindo testes completos de navegação, autenticação e usabilidade do frontend antes da integração com uma API real.
-
-Status Atual
-✅ Frontend 100% funcional
-✅ Sistema de autenticação mockado
-✅ Agenda com lembretes pessoais
-✅ Painel administrativo para publicação de eventos
-✅ Eventos públicos visíveis para pacientes
-✅ Estrutura preparada para integração com API REST
-🛠 Tecnologias Utilizadas
-🎨 Frontend
-HTML5
-CSS3
-JavaScript Vanilla
-Service Worker (PWA)
-⚙️ Backend
-Java 17
-Spring Boot 3.3.5
-Spring Security
-JWT Authentication
-Spring Data JPA
-Hibernate
-Spring Mail
-Maven
-🗄 Banco de Dados
-MySQL
-Aiven Cloud
-🚀 Funcionalidades
-Funcionalidade	Paciente	Admin
-Cadastro e login	✅	✅
-Autenticação JWT	✅	✅
-Agenda pessoal	✅	—
-Consultas, exames e medicações	✅	—
-Visualização de eventos públicos	✅	✅
-Publicação de eventos	—	✅
-Exclusão de eventos	—	✅
-Recuperação de senha	✅	✅
-Perfil do usuário	✅	✅
-🔐 Autenticação e Autorização
-
-O sistema possui dois níveis principais de acesso:
-
-Tipo	Permissões
-paciente	Agenda pessoal, lembretes e perfil
-admin	Gerenciamento de eventos e painel administrativo
-
-A autenticação foi estruturada para utilização de JWT, garantindo controle de sessão seguro e separação de permissões entre pacientes e administradores.
-
-O frontend já possui validações de acesso implementadas para proteção de páginas administrativas.
-
-📢 Sistema de Eventos Públicos
+# 📢 Eventos Públicos
 
 Os eventos publicados pelo administrador ficam disponíveis para todos os pacientes dentro da agenda integrada do sistema.
 
-Diferença entre Lembretes e Eventos
-Característica	Lembrete Pessoal	Evento Público
-Quem cria	Paciente	Admin
-Quem visualiza	Apenas o criador	Todos os pacientes
-Pode excluir	Criador	Apenas Admin
-Finalidade	Organização pessoal	Eventos da ONG
-📂 Estrutura do Projeto
-Frontend
+## 📌 Diferença entre Lembretes e Eventos
 
-A aplicação frontend é organizada em páginas e módulos JavaScript independentes.
+| Característica | Lembrete Pessoal | Evento Público |
+|---|---|---|
+| Quem cria | Paciente | Admin |
+| Quem visualiza | Apenas o criador | Todos os pacientes |
+| Pode excluir | Criador | Apenas Admin |
+| Finalidade | Organização pessoal | Eventos da ONG |
 
-Principais arquivos JavaScript
-Arquivo	Responsabilidade
-auth-mock.js	Simulação do backend
-interacoes.js	Calendário, máscaras e interações
-login.js	Lógica de autenticação
-cadastro.js	Cadastro de usuários
-agenda.js	Agenda e lembretes
-admin.js	Painel administrativo
-perfil.js	Dados da conta
-atividades.js	Cards de atividades
-filtros.js	Filtros por categoria
-🔄 Integração com API Real
+---
 
-O sistema foi preparado para migração simples do backend mockado para uma API real.
+# 📂 Estrutura do Projeto
 
-Estratégia Recomendada
+```bash
+projeto-divas/
+│
+├── index.html
+├── agenda.html
+├── admin.html
+├── perfil.html
+├── cadastro-agenda.html
+├── contribuicao.html
+│
+├── css/
+│
+├── js/
+│   ├── auth-mock.js
+│   ├── interacoes.js
+│   ├── atividades.js
+│   ├── filtros.js
+│   ├── login.js
+│   ├── cadastro.js
+│   ├── agenda.js
+│   ├── admin.js
+│   └── perfil.js
+│
+├── images/
+├── fonts/
+│
+└── projeto-divas-backend/
+```
+
+---
+
+# 🔄 Integração com API Real
+
+O frontend foi estruturado para facilitar a migração do backend mockado para uma API REST real.
+
+## ✅ Método Recomendado
 
 Criar um novo arquivo:
 
+```bash
 /js/auth-api.js
+```
 
-Mantendo exatamente os mesmos métodos utilizados no auth-mock.js.
+E manter os mesmos métodos do:
 
-Dessa forma, o frontend continua funcionando sem necessidade de grandes alterações estruturais.
+```bash
+/js/auth-mock.js
+```
 
-📡 Endpoints Necessários
-👤 Autenticação e Usuários
-Método	Endpoint	Função
-POST	/api/login	Login
-POST	/api/cadastro	Cadastro
-GET	/api/usuario/me	Usuário logado
-PUT	/api/usuario/:id	Atualizar usuário
-GET	/api/usuarios	Listar usuários
-📅 Lembretes Pessoais
-Método	Endpoint	Função
-GET	/api/lembretes	Listar lembretes
-POST	/api/lembretes	Criar lembrete
-DELETE	/api/lembretes/:id	Excluir lembrete
-🤝 Eventos Públicos
-Método	Endpoint	Função
-GET	/api/eventos-publicos	Listar eventos
-POST	/api/eventos-publicos	Publicar evento
-PUT	/api/eventos-publicos/:id	Editar evento
-DELETE	/api/eventos-publicos/:id	Excluir evento
-🗓 Agenda Consolidada
-Método	Endpoint	Função
-GET	/api/agenda	Retornar lembretes + eventos
-📊 Estrutura de Dados
-👤 Usuário
-ID
-Nome
-Email
-Telefone
-Senha criptografada
-Tipo de usuário
-Data de criação
-📅 Lembrete Pessoal
-ID
-Usuário responsável
-Data
-Horário
-Título
-Descrição
-Etiqueta
-Data de criação
-🤝 Evento Público
-ID
-Título
-Facilitadora
-Data
-Horário
-Descrição
-Data de publicação
-Administrador responsável
-🔒 Segurança
+Depois alterar no HTML:
 
-O sistema foi estruturado seguindo boas práticas de segurança:
+### Antes
+```html
+<script src="./js/auth-mock.js"></script>
+```
 
-JWT Authentication
-Controle de permissões por perfil
-Hash de senha com bcrypt/argon2
-Middleware de autenticação
-Middleware de autorização
-Expiração de token
-Refresh token
-Validação de entrada
-Proteção de rotas administrativas
-🎯 Checklist de Integração
-🔐 Auth & Usuários
-Configuração da URL da API
-Login JWT
-Cadastro com validação de e-mail
-Middleware de autenticação
-Middleware de autorização
-📝 Lembretes
-CRUD de lembretes
-Validação de dono do recurso
-🤝 Eventos
-CRUD de eventos públicos
-Restrição de acesso para admins
-🗓 Agenda
-Endpoint consolidado
-Ordenação por data e horário
-✅ Testes
-Fluxo de cadastro
-Fluxo de login
-Fluxo de lembretes
-Fluxo administrativo
-Controle de permissões
-🚀 Produção
+### Depois
+```html
+<script src="./js/auth-api.js"></script>
+```
 
-Para ambiente de produção, recomenda-se:
+---
 
-HTTPS obrigatório
-Variáveis de ambiente seguras
-Rate limiting
-Logs de erro
-Backup automático do banco
-Configuração correta de CORS
-Validação robusta de dados
-💡 Futuras Melhorias
-📱 Aplicativo mobile
-🔔 Notificações push
-📊 Dashboard administrativo
-📆 Integração com Google Calendar
-💬 Área de apoio psicológico online
-🧠 Recomendações personalizadas para pacientes
+# 📡 Endpoints Necessários
+
+## 👤 Usuários
+
+| Método | Endpoint | Função |
+|---|---|---|
+| POST | `/api/login` | Login |
+| POST | `/api/cadastro` | Cadastro |
+| GET | `/api/usuario/me` | Usuário logado |
+| PUT | `/api/usuario/:id` | Atualizar usuário |
+| GET | `/api/usuarios` | Listar usuários |
+
+---
+
+## 📅 Lembretes
+
+| Método | Endpoint | Função |
+|---|---|---|
+| GET | `/api/lembretes` | Listar lembretes |
+| POST | `/api/lembretes` | Criar lembrete |
+| DELETE | `/api/lembretes/:id` | Excluir lembrete |
+
+---
+
+## 🤝 Eventos Públicos
+
+| Método | Endpoint | Função |
+|---|---|---|
+| GET | `/api/eventos-publicos` | Listar eventos |
+| POST | `/api/eventos-publicos` | Criar evento |
+| PUT | `/api/eventos-publicos/:id` | Editar evento |
+| DELETE | `/api/eventos-publicos/:id` | Excluir evento |
+
+---
+
+## 🗓 Agenda Consolidada
+
+| Método | Endpoint | Função |
+|---|---|---|
+| GET | `/api/agenda` | Retorna lembretes + eventos |
+
+---
+
+# 🔒 Segurança
+
+O sistema utiliza:
+
+- 🔐 JWT Authentication
+- 🔑 Controle de permissões
+- 🛡 Spring Security
+- 🔒 Hash de senha com bcrypt/argon2
+- ⏳ Expiração de token
+- ♻️ Refresh Token
+- ✅ Validação de dados
+
+---
+
+# 🎯 Checklist de Integração
+
+## 🔐 Auth & Usuários
+- [ ] Configurar URL da API
+- [ ] Implementar JWT
+- [ ] Criar middleware de autenticação
+- [ ] Criar middleware de autorização
+
+## 📝 Lembretes
+- [ ] CRUD de lembretes
+- [ ] Validação do dono do recurso
+
+## 🤝 Eventos
+- [ ] CRUD de eventos públicos
+- [ ] Restrição apenas para admins
+
+## 🗓 Agenda
+- [ ] Endpoint consolidado
+- [ ] Ordenação por data/hora
+
+## ✅ Testes
+- [ ] Fluxo completo de login
+- [ ] Fluxo de lembretes
+- [ ] Fluxo administrativo
+- [ ] Testes de permissão
+
+---
+
+# 🚀 Produção
+
+Recomendações para produção:
+
+- 🌐 HTTPS obrigatório
+- 🔒 Variáveis de ambiente seguras
+- ⚡ Rate limiting
+- 📄 Logs de erro
+- 💾 Backup automático
+- 🔐 Configuração correta de CORS
+
+---
+
+# 💡 Futuras Melhorias
+
+- 📱 Aplicativo mobile
+- 🔔 Notificações push
+- 📊 Dashboard administrativo
+- 📆 Integração com Google Calendar
+- 💬 Área de apoio psicológico online
+
+---
+
+---
+
+# 💖 Projeto desenvolvido com propósito social
